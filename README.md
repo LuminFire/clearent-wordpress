@@ -1,0 +1,2 @@
+# wordpress
+Clearent Wordpress Plugin
