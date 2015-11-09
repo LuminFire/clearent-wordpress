@@ -1,0 +1,442 @@
+#prettify {
+  /*foostart*/
+  /* Tomorrow Theme */
+  /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+  /* Pretty printing styles. Used with prettify.js. */
+  /* SPAN elements with the classes below are added by prettyprint. */
+  /* plain text */
+  /* Use higher contrast and text-weight for printable form. */
+  /* Style */
+  /*
+pre.prettyprint {
+  background: white;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 12px;
+  line-height: 1.5;
+  border: 1px solid #ccc;
+  padding: 10px; }
+*/
+  /* Specify class=linenums on a pre to get line numbering */
+  /* IE indents via margin-left */
+  /* Alternate shading for lines */
+  /*fooend*/
+}
+#prettify .pln {
+  color: #4d4d4c;
+}
+@media screen {
+  #prettify {
+    /* string content */
+    /* a keyword */
+    /* a comment */
+    /* a type name */
+    /* a literal value */
+    /* punctuation */
+    /* lisp open bracket */
+    /* lisp close bracket */
+    /* a markup tag name */
+    /* a markup attribute name */
+    /* a markup attribute value */
+    /* a declaration */
+    /* a variable name */
+    /* a function name */
+  }
+  #prettify .str {
+    color: #718c00;
+  }
+  #prettify .kwd {
+    color: #8959a8;
+  }
+  #prettify .com {
+    color: #8e908c;
+  }
+  #prettify .typ {
+    color: #4271ae;
+  }
+  #prettify .lit {
+    color: #f5871f;
+  }
+  #prettify .pun {
+    color: #4d4d4c;
+  }
+  #prettify .opn {
+    color: #4d4d4c;
+  }
+  #prettify .clo {
+    color: #4d4d4c;
+  }
+  #prettify .tag {
+    color: #c82829;
+  }
+  #prettify .atn {
+    color: #f5871f;
+  }
+  #prettify .atv {
+    color: #3e999f;
+  }
+  #prettify .dec {
+    color: #f5871f;
+  }
+  #prettify .var {
+    color: #c82829;
+  }
+  #prettify .fun {
+    color: #4271ae;
+  }
+}
+@media print, projection {
+  #prettify .str {
+    color: #060;
+  }
+  #prettify .kwd {
+    color: #006;
+    font-weight: bold;
+  }
+  #prettify .com {
+    color: #600;
+    font-style: italic;
+  }
+  #prettify .typ {
+    color: #404;
+    font-weight: bold;
+  }
+  #prettify .lit {
+    color: #044;
+  }
+  #prettify .pun,
+  #prettify .opn,
+  #prettify .clo {
+    color: #440;
+  }
+  #prettify .tag {
+    color: #006;
+    font-weight: bold;
+  }
+  #prettify .atn {
+    color: #404;
+  }
+  #prettify .atv {
+    color: #060;
+  }
+}
+#prettify ol.linenums {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+#prettify li.L0,
+#prettify li.L1,
+#prettify li.L2,
+#prettify li.L3,
+#prettify li.L4,
+#prettify li.L5,
+#prettify li.L6,
+#prettify li.L7,
+#prettify li.L8,
+#prettify li.L9 {
+  /* */
+}
+#prettify li.L1,
+#prettify li.L3,
+#prettify li.L5,
+#prettify li.L7,
+#prettify li.L9 {
+  /* */
+}
+#prettify html {
+  overflow: auto;
+  background-color: #fff;
+  font-size: 14px;
+}
+#prettify body {
+  font-family: 'Open Sans', sans-serif;
+  line-height: 1.5;
+  color: #4d4e53;
+  background-color: white;
+}
+#prettify a,
+#prettify a:visited,
+#prettify a:active {
+  color: #0095dd;
+  text-decoration: none;
+}
+#prettify a:hover {
+  text-decoration: underline;
+}
+#prettify header {
+  display: block;
+  padding: 0 4px;
+}
+#prettify tt,
+#prettify code,
+#prettify kbd,
+#prettify samp {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+#prettify .class-description {
+  font-size: 130%;
+  line-height: 140%;
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+#prettify .class-description:empty {
+  margin: 0;
+}
+#prettify #main {
+  float: left;
+  width: 70%;
+}
+#prettify article dl {
+  margin-bottom: 40px;
+}
+#prettify section {
+  display: block;
+  background-color: #fff;
+  padding: 12px 24px;
+  border-bottom: 1px solid #ccc;
+  margin-right: 30px;
+}
+#prettify .variation {
+  display: none;
+}
+#prettify .signature-attributes {
+  font-size: 60%;
+  color: #aaa;
+  font-style: italic;
+  font-weight: lighter;
+}
+#prettify nav {
+  display: block;
+  float: right;
+  margin-top: 28px;
+  width: 30%;
+  box-sizing: border-box;
+  border-left: 1px solid #ccc;
+  padding-left: 16px;
+}
+#prettify nav ul {
+  font-family: 'Lucida Grande', 'Lucida Sans Unicode', arial, sans-serif;
+  font-size: 100%;
+  line-height: 17px;
+  padding: 0;
+  margin: 0;
+  list-style-type: none;
+}
+#prettify nav ul a,
+#prettify nav ul a:visited,
+#prettify nav ul a:active {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  line-height: 18px;
+  color: #4D4E53;
+}
+#prettify nav h3 {
+  margin-top: 12px;
+}
+#prettify nav li {
+  margin-top: 6px;
+}
+#prettify footer {
+  display: block;
+  padding: 6px;
+  margin-top: 12px;
+  font-style: italic;
+  font-size: 90%;
+}
+#prettify h1,
+#prettify h2,
+#prettify h3,
+#prettify h4 {
+  font-weight: 200;
+  margin: 0;
+}
+#prettify h1 {
+  font-family: 'Open Sans Light', sans-serif;
+  font-size: 48px;
+  letter-spacing: -2px;
+  margin: 12px 24px 20px;
+}
+#prettify h2,
+#prettify h3 {
+  font-size: 30px;
+  font-weight: 700;
+  letter-spacing: -1px;
+  margin-bottom: 12px;
+}
+#prettify h4 {
+  font-size: 18px;
+  letter-spacing: -0.33px;
+  margin-bottom: 12px;
+  color: #4d4e53;
+}
+#prettify h5,
+#prettify .container-overview .subsection-title {
+  font-size: 120%;
+  font-weight: bold;
+  letter-spacing: -0.01em;
+  margin: 8px 0 3px 0;
+}
+#prettify h6 {
+  font-size: 100%;
+  letter-spacing: -0.01em;
+  margin: 6px 0 3px 0;
+  font-style: italic;
+}
+#prettify .ancestors {
+  color: #999;
+}
+#prettify .ancestors a {
+  color: #999 !important;
+  text-decoration: none;
+}
+#prettify .clear {
+  clear: both;
+}
+#prettify .important {
+  font-weight: bold;
+  color: #950B02;
+}
+#prettify .yes-def {
+  text-indent: -1000px;
+}
+#prettify .type-signature {
+  color: #aaa;
+}
+#prettify .name,
+#prettify .signature {
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+}
+#prettify .details {
+  margin-top: 14px;
+  border-left: 2px solid #DDD;
+}
+#prettify .details dt {
+  width: 120px;
+  float: left;
+  padding-left: 10px;
+  padding-top: 6px;
+}
+#prettify .details dd {
+  margin-left: 70px;
+}
+#prettify .details ul {
+  margin: 0;
+}
+#prettify .details ul {
+  list-style-type: none;
+}
+#prettify .details li {
+  margin-left: 30px;
+  padding-top: 6px;
+}
+#prettify .details pre.prettyprint {
+  margin: 0;
+}
+#prettify .details .object-value {
+  padding-top: 0;
+}
+#prettify .description {
+  margin-bottom: 1em;
+  margin-top: 1em;
+}
+#prettify .code-caption {
+  font-style: italic;
+  font-size: 107%;
+  margin: 0;
+}
+#prettify .prettyprint {
+  border: 1px solid #ddd;
+  width: 80%;
+  overflow: auto;
+}
+#prettify .prettyprint.source {
+  width: inherit;
+}
+#prettify .prettyprint code {
+  font-size: 100%;
+  line-height: 18px;
+  display: block;
+  padding: 4px 12px;
+  margin: 0;
+  background-color: #fff;
+  color: #4D4E53;
+}
+#prettify .prettyprint code span.line {
+  display: inline-block;
+}
+#prettify .prettyprint.linenums {
+  padding-left: 70px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+#prettify .prettyprint.linenums ol {
+  padding-left: 0;
+}
+#prettify .prettyprint.linenums li {
+  border-left: 3px #ddd solid;
+}
+#prettify .prettyprint.linenums li.selected,
+#prettify .prettyprint.linenums li.selected * {
+  background-color: lightyellow;
+}
+#prettify .prettyprint.linenums li * {
+  -webkit-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+#prettify .params,
+#prettify .props {
+  border-spacing: 0;
+  border: 0;
+  border-collapse: collapse;
+}
+#prettify .params .name,
+#prettify .props .name,
+#prettify .name code {
+  color: #4D4E53;
+  font-family: Consolas, Monaco, 'Andale Mono', monospace;
+  font-size: 100%;
+}
+#prettify .params td,
+#prettify .params th,
+#prettify .props td,
+#prettify .props th {
+  border: 1px solid #ddd;
+  margin: 0;
+  text-align: left;
+  vertical-align: top;
+  padding: 4px 6px;
+  display: table-cell;
+}
+#prettify .params thead tr,
+#prettify .props thead tr {
+  background-color: #ddd;
+  font-weight: bold;
+}
+#prettify .params .params thead tr,
+#prettify .props .props thead tr {
+  background-color: #fff;
+  font-weight: bold;
+}
+#prettify .params th,
+#prettify .props th {
+  border-right: 1px solid #aaa;
+}
+#prettify .params thead .last,
+#prettify .props thead .last {
+  border-right: 1px solid #ddd;
+}
+#prettify .params td.description > p:first-child,
+#prettify .props td.description > p:first-child {
+  margin-top: 0;
+  padding-top: 0;
+}
+#prettify .params td.description > p:last-child,
+#prettify .props td.description > p:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+#prettify .disabled {
+  color: #454545;
+}
