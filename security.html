@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Clearent WordPress Plugin by Clearent</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>Clearent WordPress Plugin</h1>
+
+        <p>Clearent WordPress Plugin - documentation and examples</p>
+
+        <menu>
+            <a href="index.html">Overview</a>
+            <a class="active" href="security.html">Security Considerations</a>
+            <a href="global.html">Configuration</a>
+            <a href="branding.html">Styling / Branding</a>
+            <a href="examples.html">Examples</a>
+        </menu>
+
+        <p class="view"><a href="https://github.com/clearent/wordpress">View the Project on GitHub <small>clearent/wordpress</small></a></p>
+
+        <ul>
+            <li><a href="https://github.com/clearent/wordpress/zipball/master">Download <strong>ZIP File</strong></a></li>
+            <li><a href="https://github.com/clearent/wordpress/tarball/master">Download <strong>TAR Ball</strong></a></li>
+            <li><a href="https://github.com/clearent/wordpress">View On <strong>GitHub</strong></a></li>
+        </ul>
+
+    </header>
+    <section>
+        <h3>Security Requirements</h3>
+        <ul>
+            <li>Your website must use HTTPS.</li>
+            <li>Do not publish your public Key outside of your code.</li>
+            <li>For payments on the hosted payment button will only work on the website you registered when onboarding to a Hosted Payment Account.</li>
+        </ul>
+
+        <h3>Response Validation</h3>
+
+        <p>After the credit card has been charged, the browser will receive a response from the Clearent transaction processing portal. You will pass this response to your server side solution to complete the transaction. Because the
+            response comes from Clearent to the client-browser and then up to your server, you cannot trust that the response has not been tampered with. <strong>Never trust client-side data!</strong></p>
+        <p> There are multiple ways to validate the response from the browser
+            to insure that the response has not been tampered with and that you have indeed charged and received the expected amount from the client</p>
+        <ul>
+            <li>The response will contain a hash signature that can be used to validate the response. The hash is made up of the response object. You can validate the signature on your server to validate the response parameters were not
+                tampered
+                with. This is imperative to your ensuring your transaction is valid. Make sure the response is valid AND that the transaction Id is unique.
+                <a target="_blank" href="https://github.com/Clearent/HPPSignatureVerification">Clearent WordPress Plugin Verification</a></li>
+            <li>You can use our API to do a GET with the transaction ID to ensure the response matches what the client side passed you. Each transaction ID is unique so once you have accepted a transaction ID for payment, you should never
+                see the
+                same transaction ID again.
+            </li>
+            <li>You can validate the transactions manually using the virtual terminal. Again, you can search by transaction ID to validate the transaction details.</li>
+        </ul>
+
+        <h3>Browser Support</h3>
+
+        <p>
+            Clearent’s Hosted Payments Page solution will work with Chrome, Firefox, Safari, and IE10 and higher. It has been designed to work on desktops, notebooks, tablets, and mobile devices.
+
+        </p>
+
+        <h3>Troubleshooting</h3>
+
+        <p>
+            Error messages for this solution are very generic for security purposes as these errors are presented directly to the end user. Please make sure you log the exchange ID from the failed response and provide that to Clearent if
+            you have questions about any errors you receive.</p>
+
+        <p>Example:
+            <xmp><exchange-id>ID-5ba9fd2f10ea-59988-1441133412260-0-1343</exchange-id></xmp>
+        </p>
+        <p></p>
+
+        <h3>Client Side CC Validation</h3>
+
+        <p>In accordance with best security practices, all client data is validated on Clearent servers. We do perform basic client-side validation to improve the user-experience and reduce errors.
+        </p>
+
+        <h4>Validating card field</h4>
+
+        <p>Credit card numbers are validated on the client as follows:</p>
+
+        <ul>
+            <li> Get card token or card field value (remove any non-numeric characters)</li>
+            <li> Remaining digits must pass Luhn algorithm. This does not guarantee that the card is valid, simply that the card could be a valid card. This is done to help prevent typing errors.
+            </li>
+        </ul>
+        <h4>Validating expiration date</h4>
+
+        <p>Expiration date is required for all transactions unless the merchant is storing and presenting card tokens to the user</p>
+        <ul>
+            <li> If card token is used, ignore this check</li>
+            <li> Get expiration date field (remove any non-numeric characters)</li>
+            <li> Entered value must be four digits, 2-digit month and 2-digit year (MMYY)</li>
+            <li> Entered year must be > current year OR (entered year must be >= current year AND entered month must be >= current month)</li>
+        </ul>
+        <h4>Validating CVC</h4>
+
+        By default, the card security code (CSC, CID, CVC, CVV, CVV2) is required for all transactions unless the merchant is storing and presenting card tokens to the user
+        <ul>
+            <li> If card token is used, ignore this check</li>
+            <li> Get CVC field (remove any non-numeric characters)</li>
+            <li> If card is Visa, MasterCard, Discover, Diner’s Club or JCB then the security code must be 3 digits</li>
+            <li> If card is American Express then security code must be 4 digits</li>
+        </ul>
+    </section>
+    <footer>
+        <p>This project is maintained by <a href="https://github.com/Clearent">Clearent</a></p>
+
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
+
+</body>
+</html>

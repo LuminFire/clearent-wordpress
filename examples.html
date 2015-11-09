@@ -1,0 +1,185 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Clearent WordPress Plugin by Clearent</title>
+    <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Clearent WordPress Plugin</h1>
+        <p>Clearent WordPress Plugin - documentation and examples</p>
+
+        <menu>
+          <a href="index.html">Overview</a>
+          <a href="security.html">Security Considerations</a>
+          <a href="global.html">Configuration</a>
+          <a href="branding.html">Styling / Branding</a>
+          <a class="active" href="examples.html">Examples</a>
+        </menu>
+
+        <p class="view"><a href="https://github.com/clearent/wordpress">View the Project on GitHub <small>clearent/wordpress</small></a></p>
+
+        <ul>
+          <li><a href="https://github.com/clearent/wordpress/zipball/master">Download <strong>ZIP File</strong></a></li>
+          <li><a href="https://github.com/clearent/wordpress/tarball/master">Download <strong>TAR Ball</strong></a></li>
+          <li><a href="https://github.com/clearent/wordpress">View On <strong>GitHub</strong></a></li>
+        </ul>
+
+      </header>
+      <section>
+
+        <p></p>
+        <p>After you have looked at some examples below, be sure to <a href="https://hpp-sb.clearent.net/" target="_blank">head on over to our live demo page and try out your own examples!</a></p>
+
+        <h3>Basic 2 Lines of Code Example</h3>
+
+        <p>At a bare minimum, you must set your Clearent-provided public key and call the Clearent.payButton() method. If you don't provide an amount,
+          an amount field will be included in the payment popup. Genereally, this would only be used when taking donations and not accepting a specific payment amount.</p>
+
+        <p>This code . . . </p>
+
+        <xmp>
+        <script type="text/javascript" src="https://hpp-sb.clearent.net/js/clearent.js"></script>
+        <script>
+          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
+          Clearent.payButton({"amount": "64.50"});
+        </script>
+        </xmp>
+
+        <p>Produces a "Pay Now" button on the page (<a href="global.html">the "Pay Now" text is configurable</a>) </p>
+
+        <img src="images/paynow.png"/>
+
+        <p>That when clicked produces this popup:</p>
+
+        <img src="images/example1.png"/>
+
+        <p></p>
+        <h3>Flexible Configuration</h3>
+
+        <p>Configuration options can be grouped together when calling the <code>payButton()</code> method or added separately. The following are all equivalent:</p>
+
+        <xmp>
+        <script>
+          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
+          Clearent.setProperty("heading-text", "Complete payment details below");
+          Clearent.setProperty("show-billing-address", true);
+          Clearent.payButton({"amount": "64.50"});
+        </script>
+        </xmp>
+
+        <xmp>
+        <script>
+          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
+          Clearent.setProperty("heading-text", "Complete payment details below");
+          Clearent.setProperty("show-billing-address", true);
+          Clearent.setProperty("amount", "64.50");
+          Clearent.payButton();
+        </script>
+        </xmp>
+
+        <xmp>
+        <script>
+          Clearent.payButton({
+            "pk": "307a301406072a864.....8ce3d076fde833c136b",
+            "heading-text": "Complete payment details below",
+            "show-billing-address": true,
+            "amount": "64.50"
+          });
+        </script>
+        </xmp>
+
+        <p></p>
+        <h3>Configuring Optional Billing Address and Heading Text</h3>
+
+        <p>As you saw in the <a href="global.html">configuration page</a> there are many options that can be configured. Below we are adding an optional billing address and
+          changing the heading text of the popup. </p>
+
+        <xmp>
+        <script>
+          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
+          Clearent.setProperty("heading-text", "Complete payment details below");
+          Clearent.setProperty("show-billing-address", true);
+          Clearent.payButton({"amount": "64.50"});
+        </script>
+        </xmp>
+
+        <img src="images/example2.png"/>
+
+        <p></p>
+        <p>The WordPress Plugin is responsive and designed use the screen efficiently. The same screen as above but viewed on a larger, non-mobile screen: </p>
+
+        <img src="images/example3.png"/>
+
+        <p></p>
+        <h3>Using Card Tokens</h3>
+
+        <p>By setting the "show-save-card-option", your customers can save their card data securely in our vault. A token is returned from the sale request that can be stored on your servers without
+          storing sensitive card data. </p>
+
+        <xmp>
+        <script>
+          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
+          Clearent.setProperty("show-save-card-option", true);
+          Clearent.payButton({"amount": "64.50"});
+        </script>
+        </xmp>
+
+        <p>Your customer would then have the option of saving their card information for future purchases. </p>
+
+        <img src="images/example4.png"/>
+
+        <p></p>
+        <p>They can even save a meaningful name for their card: </p>
+
+        <img src="images/example5.png"/>
+
+        <p></p>
+        <p>The next time the customer logs into your site, you can provide saved payment methods to make the checkout process even easier. You simply provide
+        the token, card type, and description that was returned from the sale request.</p>
+
+        <xmp>
+        <script>
+          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
+          Clearent.addToken({"token":"1100005218649761111","cardType":"VISA"});
+          Clearent.addToken({"token":"1312451222335452217","cardType":"MasterCard"});
+          Clearent.addToken({"token":"1142451131215453214","description":"Vacation card"});
+          Clearent.addToken({"token":"1412451141215454218","cardType":"Visa","description":"Business travel card"});
+          Clearent.addToken({"token":"1512451151215455211"});
+          Clearent.addToken({"token":"1612451161215456216"});
+          Clearent.payButton({"amount": "64.50"});
+        </script>
+        </xmp>
+
+        <p></p>
+        <p>The next time the customer logs into your site, you can provide saved payment methods to make the checkout process even easier. You simply provide
+          the token, card type, and description that was returned from the sale request. Saved cards are listed with the description provided by the customer.
+        </p><p>
+        If the customer didn't save a description with their card then the card is displayed as "[card type] ending in [last for digits of card]". If no card type
+        is provided when adding a token then the card is displayed as "Card ending in [last for digits of card]". </p>
+
+        <img src="images/example6.png"/>
+
+        <p></p>
+        <p>Ready to try some examples on your own? <a href="https://hpp-sb.clearent.net/" target="_blank">Visit our live demo page and try out your own examples!</a></p>
+
+
+      </section>
+      <footer>
+        <p>This project is maintained by <a href="https://github.com/Clearent">Clearent</a></p>
+        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+      </footer>
+    </div>
+    <script src="javascripts/scale.fix.js"></script>
+    
+  </body>
+</html>
