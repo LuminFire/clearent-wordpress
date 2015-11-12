@@ -16,7 +16,7 @@
     <div class="wrapper">
       <header>
         <h1>Clearent WordPress Plugin</h1>
-        <p>Clearent WordPress Plugin - documentation and examples</p>
+        <p>Documentation and examples</p>
 
         <menu>
           <a href="index.html">Overview</a>
@@ -26,32 +26,30 @@
           <a class="active" href="examples.html">Examples</a>
         </menu>
 
-        <p class="view"><a href="https://github.com/clearent/wordpress">View the Project on GitHub <small>clearent/wordpress</small></a></p>
-
-        <ul>
-          <li><a href="https://github.com/clearent/wordpress/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/clearent/wordpress/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/clearent/wordpress">View On <strong>GitHub</strong></a></li>
-        </ul>
-
       </header>
       <section>
 
         <p></p>
         <p>After you have looked at some examples below, be sure to <a href="https://hpp-sb.clearent.net/" target="_blank">head on over to our live demo page and try out your own examples!</a></p>
 
-        <h3>Basic 2 Lines of Code Example</h3>
+        <h3>Basic "One Line of Code" Example</h3>
 
-        <p>At a bare minimum, you must set your Clearent-provided public key and call the Clearent.payButton() method. If you don't provide an amount,
-          an amount field will be included in the payment popup. Genereally, this would only be used when taking donations and not accepting a specific payment amount.</p>
+        <p>At a bare minimum, you must:</p>
+
+          <ul>
+            <li>Include a link to the clearent.js script (Sandbox testing link shown below).</li>
+            <li>Set your Clearent-provided public key and sale amount.</li>
+            <li>Call the Clearent.payButton() method.</li>
+          </ul>
+
+        <p>If you don't provide an amount, an amount field will be included in the payment popup. Generally, this would only be used when taking donations and not accepting a specific payment amount.</p>
 
         <p>This code . . . </p>
 
         <xmp>
         <script type="text/javascript" src="https://hpp-sb.clearent.net/js/clearent.js"></script>
         <script>
-          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
-          Clearent.payButton({"amount": "64.50"});
+          Clearent.payButton({"pk":"307a301406072a864.....8ce3d076fde833c136b", "amount": "64.50"});
         </script>
         </xmp>
 
@@ -116,12 +114,15 @@
         <img src="images/example2.png"/>
 
         <p></p>
-        <p>The WordPress Plugin is responsive and designed use the screen efficiently. The same screen as above but viewed on a larger, non-mobile screen: </p>
+        <p>The Hosted Payment Page is responsive and designed use the screen efficiently. The same screen as above but viewed on a larger, non-mobile screen: </p>
 
         <img src="images/example3.png"/>
 
         <p></p>
+
         <h3>Using Card Tokens</h3>
+
+        <h4>Performing a sale transaction and saving card for future use.</h4>
 
         <p>By setting the "show-save-card-option", your customers can save their card data securely in our vault. A token is returned from the sale request that can be stored on your servers without
           storing sensitive card data. </p>
@@ -144,8 +145,71 @@
         <img src="images/example5.png"/>
 
         <p></p>
+
+        <h4>Performing a token-only request.</h4>
+
+        <p></p>
+
+        <p>Depending on how your site is designed, you may have a need to save a card token without doing a sale.</p>
+
+        <p>This code . . . </p>
+
+        <xmp>
+        <script>
+          Clearent.payButton({"pk": "307a301406072a864.....8ce3d076fde833c136b",
+            "card-token-only": true,
+            "heading-text": "Enter card information below",
+            "card-acceptence-label": "",
+            "amount":0
+          });
+        </script>
+        </xmp>
+
+        <p>Produces an "Add payment method" button on the page (<a href="global.html">the "Add payment method" text is configurable</a>) </p>
+
+        <img src="images/add-pay-method-1.png"/>
+
+        <p>That when clicked produces this popup:</p>
+
+        <img src="images/add-pay-method-2.png"/>
+
+        <p></p>
+
+        <h4>Using card tokens.</h4>
+
+        <p></p>
+
         <p>The next time the customer logs into your site, you can provide saved payment methods to make the checkout process even easier. You simply provide
-        the token, card type, and description that was returned from the sale request.</p>
+          the token, card type, and description that was returned from the token-only request or the token returned from the sale with card card option request.</p>
+
+        <xmp>
+        <script>
+        function ClearentOnSuccess(responseRaw,ResponseJSON){
+
+            // if you set the card-token-only option on your page you can get the token information back like this
+            if(ResponseJSON.payload && ResponseJSON.payload.tokenResponse){
+                var tokenResponse = ResponseJSON.payload.tokenResponse;
+                console.log('token-id = ' + tokenResponse['token-id']);
+                console.log('token card-type = ' + tokenResponse['card-type']);
+                console.log('token description = ' + tokenResponse['description']);
+            }
+
+            // if you set the show-save-card-option on your page AND the user chose to save their card you can get the token information back like this
+            if(ResponseJSON.links){
+                var links = ResponseJSON.links;
+                for (var i= 0;i<links.length;i++){
+                    if(links[i]['rel'] == "token"){
+                        console.log('token-id = ' + links[i]['id']);
+                    }
+                }
+            }
+
+        }
+        </script>
+        </xmp>
+
+        <p>The next time the customer logs into your site, you can provide saved payment methods using the <strong>Clearent.addToken()</strong> method to make the checkout process even easier.
+          You simply provide the token, card type, and description that was returned from the token-only request or the token returned from the sale with card card option request.</p>
 
         <xmp>
         <script>
@@ -161,11 +225,15 @@
         </xmp>
 
         <p></p>
-        <p>The next time the customer logs into your site, you can provide saved payment methods to make the checkout process even easier. You simply provide
-          the token, card type, and description that was returned from the sale request. Saved cards are listed with the description provided by the customer.
-        </p><p>
-        If the customer didn't save a description with their card then the card is displayed as "[card type] ending in [last for digits of card]". If no card type
-        is provided when adding a token then the card is displayed as "Card ending in [last for digits of card]". </p>
+
+        <p>The saved cards are presented to the user in a dropdown list:</p>
+
+        <ul>
+          <li><strong>Enter Card Manually</strong> - The user can select this card option to enter the card information manually and not use a saved card.</li>
+          <li><strong>[card description]</strong> - If description is provided in addToken method (see script above) the the card description is shown in the dropdown.</li>
+          <li><strong>[card type] ending in [last for digits of card]</strong> - If no description was provided but card type is available, the card type and last four digits of card are shown in dropdown.</li>
+          <li><strong>Card ending in [last for digits of card]</strong> - If no description or card type was provided, "Card ending in" last four digits of card is shown in the dropdown.</li>
+        </ul>
 
         <img src="images/example6.png"/>
 

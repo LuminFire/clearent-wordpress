@@ -2,7 +2,7 @@
 
 body {
   padding:50px;
-  font:14px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font:16px/1.5 Lato, "Helvetica Neue", Helvetica, Arial, sans-serif;
   color:#777;
   font-weight:300;
 }
@@ -12,7 +12,7 @@ h1, h2, h3, h4, h5, h6 {
   margin:0 0 20px;
 }
 
-p, ul, ol, table, pre, dl {
+p, ul, ol, table, dl {
   margin:0 0 20px;
 }
 
@@ -49,9 +49,25 @@ a small {
   display:block;
 }
 
+code{
+  padding:5px;
+  border-radius: 3px;
+  background-color: #EBEBEB;
+  margin: 30px 0;
+  display:inline-block;
+}
+
 .wrapper {
-  width:860px;
+  width:1060px;
   margin:0 auto;
+}
+
+.framed{
+  border:1px solid #ccc;
+  border-radius: 4px;
+  -webkit-box-shadow: 6px 6px 15px -2px rgba(0,0,0,0.75);
+  -moz-box-shadow: 6px 6px 15px -2px rgba(0,0,0,0.75);
+  box-shadow: 6px 6px 15px -2px rgba(0,0,0,0.75);
 }
 
 blockquote {
@@ -59,20 +75,6 @@ blockquote {
   margin:0;
   padding:0 0 0 20px;
   font-style:italic;
-}
-
-code, pre {
-  font-family:Monaco, Bitstream Vera Sans Mono, Lucida Console, Terminal;
-  color:#333;
-  font-size:12px;
-}
-
-pre {
-  padding:8px 15px;
-  background: #f8f8f8;
-  border-radius:5px;
-  border:1px solid #e5e5e5;
-  overflow-x: auto;
 }
 
 table {
@@ -220,7 +222,7 @@ header menu a + a + a + a + a {
 }
 
 section {
-  width:500px;
+  width:700px;
   float:right;
   padding-bottom:50px;
 }
@@ -291,9 +293,6 @@ footer {
     position:static;
   }
 
-  pre, code {
-    word-wrap:normal;
-  }
 }
 
 @media print, screen and (max-width: 480px) {

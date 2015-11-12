@@ -17,7 +17,7 @@
     <header>
         <h1>Clearent WordPress Plugin</h1>
 
-        <p>Clearent WordPress Plugin - documentation and examples</p>
+        <p>Documentation and examples</p>
 
         <menu>
             <a href="index.html">Overview</a>
@@ -27,29 +27,28 @@
             <a href="examples.html">Examples</a>
         </menu>
 
-        <p class="view"><a href="https://github.com/clearent/wordpress">View the Project on GitHub <small>clearent/wordpress</small></a></p>
-
-        <ul>
-            <li><a href="https://github.com/clearent/wordpress/zipball/master">Download <strong>ZIP File</strong></a></li>
-            <li><a href="https://github.com/clearent/wordpress/tarball/master">Download <strong>TAR Ball</strong></a></li>
-            <li><a href="https://github.com/clearent/wordpress">View On <strong>GitHub</strong></a></li>
-        </ul>
-
     </header>
     <section>
         <h3>Security Requirements</h3>
         <ul>
-            <li>Your website must use HTTPS.</li>
-            <li>Do not publish your public Key outside of your code.</li>
-            <li>For payments on the hosted payment button will only work on the website you registered when onboarding to a Hosted Payment Account.</li>
+            <li>Your WordPress site must use HTTPS.</li>
+            <li>Do not publish your API Key or share it with anyone.</li>
+            <li>Never store or displayed non-encrypted card data anywhere on your site.</li>
         </ul>
 
         <h3>Response Validation</h3>
 
-        <p>After the credit card has been charged, the browser will receive a response from the Clearent transaction processing portal. You will pass this response to your server side solution to complete the transaction. Because the
-            response comes from Clearent to the client-browser and then up to your server, you cannot trust that the response has not been tampered with. <strong>Never trust client-side data!</strong></p>
-        <p> There are multiple ways to validate the response from the browser
-            to insure that the response has not been tampered with and that you have indeed charged and received the expected amount from the client</p>
+        <h4>Successful Transactions</h4>
+
+        <p>After each transaction request, the browser will receive a response from the Clearent transaction processing portal. If the transaction request was successful,
+        the application looks for a callback function named "ClearentOnSuccess" and if found, calls this function. The function receives two parameters, the raw, signed
+        response from the server (see "Clearent WordPress Plugin Verification" below) and a JSON object representation of the the raw response. In the example below,
+        we created a function to log the raw response, the JSON-formatted response, and the transaction id to the browser's developer console.</p>
+
+
+        <p>You will pass this raw response to your server side solution to complete the transaction. Because the response comes from Clearent to the
+            client-browser and then up to your server, you cannot trust that the response has not been tampered with. <strong>Never trust client-side data!</strong></p>
+        <p> There are multiple ways to validate the response from the browser to insure that the response has not been tampered with and that you have indeed charged and received the expected amount from the client</p>
         <ul>
             <li>The response will contain a hash signature that can be used to validate the response. The hash is made up of the response object. You can validate the signature on your server to validate the response parameters were not
                 tampered
@@ -59,13 +58,35 @@
                 see the
                 same transaction ID again.
             </li>
-            <li>You can validate the transactions manually using the virtual terminal. Again, you can search by transaction ID to validate the transaction details.</li>
+            <li>You can validate the transactions manually using the Virtual Terminal. Again, you can search by transaction ID to validate the transaction details.</li>
         </ul>
+
+        <h4>Failed Transactions</h4>
+
+        <p>If the transaction was not successful, the browser will receive a response from the Clearent transaction processing portal containing an error message. The user
+            will see a generic error message: <strong>"We were unable to process your payment. Please verify your card details and try again or contact us to complete your order."</strong>
+            This <a href="global.html">error message can be configured</a> with different text if necessary.
+            </p>
+
+        <p>For failed transactions, the application looks for a callback function named "ClearentOnError" and if found,
+            calls this function. This function also receives the same two parameters as the ClearentOnSuccess function; the raw, signed response from the server (see "Clearent Hosted Payment
+            Page Verification" below) and a JSON object representation of the the raw response.</p>
+
+        <p>In the example below, we created a function to log the raw response, the JSON-formatted response, the error-message (if present) and the
+                transaction id (if present) to the browser's developer console. </p>
+
+        <p>Upon examining the response from a failed transaction, you will notice the error messages in the response objects are intentionally vague. This is done
+            to prevent scammers from using the service to test cards and security codes. If the card is invalid, or expiration invalid, or security code invalid, the response will simply contain,
+            a generic message. You can use the transaction id to look up the transaction details in Virtual Terminal to examine the transaction in more detail.</p>
+
+        <p> The response will not contain
+            transaction information if a transaction was not attempted. Possible reasons for non-attempted transactions are invalid or expired public key, or unrecoverable server error. </p>
+
 
         <h3>Browser Support</h3>
 
         <p>
-            Clearent’s Hosted Payments Page solution will work with Chrome, Firefox, Safari, and IE10 and higher. It has been designed to work on desktops, notebooks, tablets, and mobile devices.
+            Clearent’s WordPress Plugin will work with Chrome, Firefox, Safari, and IE10 and higher. It has been designed to work on desktops, notebooks, tablets, and mobile devices.
 
         </p>
 
@@ -76,8 +97,10 @@
             you have questions about any errors you receive.</p>
 
         <p>Example:
-            <xmp><exchange-id>ID-5ba9fd2f10ea-59988-1441133412260-0-1343</exchange-id></xmp>
+        <br>
+        Exchange ID: <code>ID-CLASBDKRGW01-cgw01-41232-1446575925523-0-2261</code>
         </p>
+
         <p></p>
 
         <h3>Client Side CC Validation</h3>
@@ -90,27 +113,23 @@
         <p>Credit card numbers are validated on the client as follows:</p>
 
         <ul>
-            <li> Get card token or card field value (remove any non-numeric characters)</li>
-            <li> Remaining digits must pass Luhn algorithm. This does not guarantee that the card is valid, simply that the card could be a valid card. This is done to help prevent typing errors.
-            </li>
+            <li> Card number is present.</li>
+            <li> Card is between 13 and 19 characters.</li>
         </ul>
+
         <h4>Validating expiration date</h4>
 
-        <p>Expiration date is required for all transactions unless the merchant is storing and presenting card tokens to the user</p>
+        <p>Expiration date is required for all transactions:</p>
         <ul>
-            <li> If card token is used, ignore this check</li>
-            <li> Get expiration date field (remove any non-numeric characters)</li>
-            <li> Entered value must be four digits, 2-digit month and 2-digit year (MMYY)</li>
-            <li> Entered year must be > current year OR (entered year must be >= current year AND entered month must be >= current month)</li>
+            <li> Year selected must be greater than current year or</li>
+            <li> Year selected must be current year and month selected must be current month or later.</li>
         </ul>
         <h4>Validating CVC</h4>
 
-        By default, the card security code (CSC, CID, CVC, CVV, CVV2) is required for all transactions unless the merchant is storing and presenting card tokens to the user
+        <p>By default, the card security code (CSC, CID, CVC, CVV, CVV2) is required for all transactions unless the merchant is storing and presenting card tokens to the user</p>
+
         <ul>
-            <li> If card token is used, ignore this check</li>
-            <li> Get CVC field (remove any non-numeric characters)</li>
-            <li> If card is Visa, MasterCard, Discover, Diner’s Club or JCB then the security code must be 3 digits</li>
-            <li> If card is American Express then security code must be 4 digits</li>
+            <li> If required (see <a href="global.html">Configuration</a>), security code must be 3 or 4 digits</li>
         </ul>
     </section>
     <footer>

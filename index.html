@@ -1,72 +1,82 @@
 <!doctype html>
 <html>
-  <head>
+<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="chrome=1">
     <title>Clearent WordPress Plugin by Clearent</title>
     <link rel="shortcut icon" type="image/png" href="images/favicon.ico"/>
     <link rel="stylesheet" href="stylesheets/styles.css">
     <link rel="stylesheet" href="stylesheets/github-light.css">
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <!--[if lt IE 9]>
     <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-  </head>
-  <body>
-    <div class="wrapper">
-      <header>
-        <h1>Clearent Wordpress Plugin</h1>
-        <p>Clearent Wordpress Plugin</p>
+</head>
+<body>
+<div class="wrapper">
+    <header>
+        <h1>Clearent WordPress Plugin</h1>
+
+        <p>Documentation and examples</p>
 
         <menu>
-          <a class="active" href="index.html">Overview</a>
-          <a href="security.html">Security Considerations</a>
-          <a href="global.html">Configuration</a>
-          <a href="branding.html">Styling / Branding</a>
-          <a href="examples.html">Examples</a>
+            <a class="active" href="index.html">Overview</a>
+            <a href="security.html">Security Considerations</a>
+            <a href="global.html">Configuration</a>
+            <a href="branding.html">Styling / Branding</a>
+            <a href="examples.html">Examples</a>
         </menu>
 
-        <p class="view"><a href="https://github.com/clearent/wordpress">View the Project on GitHub <small>clearent/wordpress</small></a></p>
+    </header>
+    <section>
+        <h3>Plugin Overview</h3>
+
+        <p>Do you have a need to accept payments on your WordPress site? Sometimes what seems like a simple task can quickly become overwhelming as you look
+            into the options of accepting payments online. Then pile on the complexity of security, with the number of data breaches over the past
+            few years, small business can’t take the risk of being the next headline for a data breach.
+        </p>
+
+        <p>
+            You have a simple need, you want to take payments or donations on your website to help your business be more efficient. Clearent
+            has worked hard over the years to provide business various ways of accepting payments to help businesses run smoother. Our
+            WordPress plugin may be just the thing your company needs to get started to accepting payments online.
+        </p>
+
+        <h3>How it works</h3>
+
+        <p>The Clearent WordPress plubin allows businesses to add a payment option to their website by adding simple WordPress shortcode to any
+            page in your WordPress site.</p>
+        <ol>
+            <li> Add the shortcode to your page (<a href="examples.html">see our examples</a>)</li>
+            <code>[clearent_pay_form amount="41.77" require_csc=true]</code>
+            <li> When a customer or client visits your page, they will see the payment form and pay now button</li>
+            <br><p><img class="framed" src="images/overview-basic.png"/></p>
+            <li> Customer enters in their payment information</li>
+            <li> Customer clicks the pay now button</li>
+            <li> Clearent processes the transaction</li>
+            <li> Customer is redirected to configured success page</li>
+        </ol>
+
+        <h3>Get Started Today</h3>
+        <ol>
+            <li> Have a Clearent merchant account</li>
+            <li> Complete the API request form</li>
+            <li> Install and configure the WordPress plugin</li>
+            <li> Add the WordPress shortcode to your page(s)</li>
+            <li> You’re ready to take payments!</li>
+        </ol>
 
 
-        <ul>
-          <li><a href="https://github.com/clearent/wordpress/zipball/master">Download <strong>ZIP File</strong></a></li>
-          <li><a href="https://github.com/clearent/wordpress/tarball/master">Download <strong>TAR Ball</strong></a></li>
-          <li><a href="https://github.com/clearent/wordpress">View On <strong>GitHub</strong></a></li>
-        </ul>
-      </header>
-      <section>
-        <h3>
-<a id="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages" aria-hidden="true"><span class="octicon octicon-link"></span></a>Clearent WordPress Plugin Overview</h3>
+    </section>
+    <footer>
+        <p>This project is maintained by <a href="https://github.com/Clearent">Clearent</a></p>
 
-<p>This automatic page generator is the easiest way to create beautiful pages for all of your projects. Author your page content here <a href="https://guides.github.com/features/mastering-markdown/">using GitHub Flavored Markdown</a>, select a template crafted by a designer, and publish. After your page is generated, you can check out the new <code>gh-pages</code> branch locally. If you’re using GitHub Desktop, simply sync your repository and you’ll see the new branch.</p>
+        <p>
+            <small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small>
+        </p>
+    </footer>
+</div>
+<script src="javascripts/scale.fix.js"></script>
 
-<h3>
-<a id="designer-templates" class="anchor" href="#designer-templates" aria-hidden="true"><span class="octicon octicon-link"></span></a>Designer Templates</h3>
-
-<p>We’ve crafted some handsome templates for you to use. Go ahead and click 'Continue to layouts' to browse through them. You can easily go back to edit your page before publishing. After publishing your page, you can revisit the page generator and switch to another theme. Your Page content will be preserved.</p>
-
-<h3>
-<a id="creating-pages-manually" class="anchor" href="#creating-pages-manually" aria-hidden="true"><span class="octicon octicon-link"></span></a>Creating pages manually</h3>
-
-<p>If you prefer to not use the automatic generator, push a branch named <code>gh-pages</code> to your repository to create a page manually. In addition to supporting regular HTML content, GitHub Pages support Jekyll, a simple, blog aware static site generator. Jekyll makes it easy to create site-wide headers and footers without having to copy them across every page. It also offers intelligent blog support and other advanced templating features.</p>
-
-<h3>
-<a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span class="octicon octicon-link"></span></a>Authors and Contributors</h3>
-
-<p>You can <a href="https://github.com/blog/821" class="user-mention">@mention</a> a GitHub username to generate a link to their profile. The resulting <code>&lt;a&gt;</code> element will link to the contributor’s GitHub Profile. For example: In 2007, Chris Wanstrath (<a href="https://github.com/defunkt" class="user-mention">@defunkt</a>), PJ Hyett (<a href="https://github.com/pjhyett" class="user-mention">@pjhyett</a>), and Tom Preston-Werner (<a href="https://github.com/mojombo" class="user-mention">@mojombo</a>) founded GitHub.</p>
-
-<h3>
-<a id="support-or-contact" class="anchor" href="#support-or-contact" aria-hidden="true"><span class="octicon octicon-link"></span></a>Support or Contact</h3>
-
-<p>Having trouble with Pages? Check out our <a href="https://help.github.com/pages">documentation</a> or <a href="https://github.com/contact">contact support</a> and we’ll help you sort it out.</p>
-      </section>
-      <footer>
-        <p>This project is maintained by <a href="https://github.com/clearent">clearent</a></p>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
-      </footer>
-    </div>
-    <script src="javascripts/scale.fix.js"></script>
-    
-  </body>
+</body>
 </html>

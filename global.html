@@ -18,7 +18,7 @@
     <header>
         <h1>Clearent WordPress Plugin</h1>
 
-        <p>Clearent WordPress Plugin - documentation and examples</p>
+        <p>Documentation and examples</p>
 
         <menu>
             <a href="index.html">Overview</a>
@@ -28,1411 +28,468 @@
             <a href="examples.html">Examples</a>
         </menu>
 
-        <p class="view"><a href="https://github.com/clearent/wordpress">View the Project on GitHub <small>clearent/wordpress</small></a></p>
-
-        <ul>
-            <li><a href="https://github.com/clearent/wordpress/zipball/master">Download <strong>ZIP File</strong></a></li>
-            <li><a href="https://github.com/clearent/wordpress/tarball/master">Download <strong>TAR Ball</strong></a></li>
-            <li><a href="https://github.com/clearent/wordpress">View On <strong>GitHub</strong></a></li>
-        </ul>
-
     </header>
     <section>
         <h3>Clearent WordPress Plugin is Highly Configurable</h3>
 
-        <p>Clearent's WordPress Plugin was designed to provide an embedded payment solution quickly and easily. <a href="examples.html">You can get your payments working with just a few lines of code</a> and
-            you don't need to do any custom configuration. But if you want to configure the text and behavior of the WordPress Plugin popup, there are many options detailed below. We
+        <p>Clearent's Hosted Payment Page was designed to provide an embedded payment solution quickly and easily. <a href="examples.html">You can get your payments working with just a few lines of code</a> and
+            you don't need to do any custom configuration. But if you want to configure the text and behavior of the Hosted Payment Page popup, there are many options detailed below. We
             even made it easy to <a href="branding.html">style and brand</a> the popup to match your site.</p>
 
-        <div id="prettify">
-            <article>
-                <div class="container-overview">
-                    <dl class="details">
-                    </dl>
-                </div>
-                <h3 class="subsection-title">Members</h3>
-                <h4 class="name" id="add-payment-button-text"><span class="type-signature"></span>add-payment-button-text<span class="type-signature"> :string</span></h4>
+        <table border="1">
+            <tr>
+                <th>Shortcode attribute</th>
+                <th>Default value</th>
+                <th>Notes</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>amount</td>
+                <td>0</td>
+                <td>Value is required</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>// labels</th>
+                <th>Default value</th>
+                <th>Notes</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>title</td>
+                <td> Complete Transaction Details Below</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>button_text</td>
+                <td> Pay Now</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>card_label</td>
+                <td> Card Number</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>exp_date_label</td>
+                <td> Card Expiration Date</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>csc_label</td>
+                <td> Card Security Code</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>invoice_label</td>
+                <td> Invoice Number</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>purchase_order_label</td>
+                <td> Purchase Order</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>email_address_label</td>
+                <td> Email Address</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>customer_id_label</td>
+                <td> Customer ID</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>order_id_label</td>
+                <td> Order ID</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>description_label</td>
+                <td> Description</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>comments_label</td>
+                <td> Comments</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_address_label</td>
+                <td> Billing Address</td>
+                <td>Only applicable if billing fields are shown</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_first_name_label</td>
+                <td> First Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_last_name_label</td>
+                <td> Last Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_company_label</td>
+                <td> Company</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_street_label</td>
+                <td> Address</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_street2_label</td>
+                <td> Address Line 2</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_city_label</td>
+                <td> City</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_state_label</td>
+                <td> State</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_zip_label</td>
+                <td> Zip</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_country_label</td>
+                <td> Country</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_phone_label</td>
+                <td> Phone</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_address_label</td>
+                <td> Shipping</td>
+                <td>Only applicable if shipping fields are shown</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>billing_is_shipping_label</td>
+                <td> Same as billing address</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_first_name_label</td>
+                <td> First Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_last_name_label</td>
+                <td> Last Name</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_company_label</td>
+                <td> Company</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_street_label</td>
+                <td> Address</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_street2_label</td>
+                <td> Address Line 2</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_city_label</td>
+                <td> City</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_state_label</td>
+                <td> State</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_zip_label</td>
+                <td> Zip</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_country_label</td>
+                <td> Country</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_phone_label</td>
+                <td> Phone</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>// optional fields</th>
+                <th>Default value</th>
+                <th>Notes</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>invoice</td>
+                <td> false</td>
+                <td>If "true", field is shown</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>purchase_order</td>
+                <td> false</td>
+                <td>If "false", field is not shown</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>email_address</td>
+                <td> false</td>
+                <td>If any other value, field is hidden with value set</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>customer_id</td>
+                <td> false</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>order_id</td>
+                <td> false</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>description</td>
+                <td> false</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>comments</td>
+                <td> false</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>// shipping/billing</th>
+                <th>Default value</th>
+                <th>Notes</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>billing_address</td>
+                <td> false</td>
+                <td>"true" to show all billing address fields (not needed if require_billing_address=true)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>shipping_address</td>
+                <td> false</td>
+                <td>"true" to show all shipping address fields (not needed if require_shipping_address=true)</td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>// field options</th>
+                <th>Default value</th>
+                <th>Notes</th>
+                <th></th>
+            </tr>
+            <tr>
+                <td>require_billing_address</td>
+                <td> false</td>
+                <td>"true" to show and require billing address fields</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>require_shipping_address</td>
+                <td> false</td>
+                <td>"true" to show and require shipping address fields</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>require_csc</td>
+                <td> true</td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <th>// optional fields</th>
+                <th>Default value</th>
+                <th>billing_address=true</th>
+                <th>require_billing_address=true</th>
+            </tr>
+            <tr>
+                <td>billing-first-name</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>billing-last-name</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>billing-company</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed</td>
+            </tr>
+            <tr>
+                <td>billing-street</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>billing-street2</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed</td>
+            </tr>
+            <tr>
+                <td>billing-city</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>billing-state</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>billing-zip</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>billing-country</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>billing-phone</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <th>optional fields</th>
+                <th>Default value</th>
+                <th>shipping_address=true</th>
+                <th>require_shipping_address=true</th>
+            </tr>
+            <tr>
+                <td>shipping-first-name</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>shipping-last-name</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>shipping-company</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed</td>
+            </tr>
+            <tr>
+                <td>shipping-street</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>shipping-street2</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed</td>
+            </tr>
+            <tr>
+                <td>shipping-city</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>shipping-state</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>shipping-zip</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>shipping-country</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+            <tr>
+                <td>shipping-phone</td>
+                <td>Not displayed</td>
+                <td>Displayed</td>
+                <td>Displayed and required</td>
+            </tr>
+        </table>
 
-                <div class="description">
-                    text to appear on the button that launches the add payment method form
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Add payment method</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("add-payment-button-text","Add new payment method");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "add-payment-button-text": "Add new payment method"
-        });</code></pre>
-                <h4 class="name" id="address-placeholder"><span class="type-signature"></span>address-placeholder<span class="type-signature"> :string</span></h4>
 
-                <div class="description">
-                    text to appear in address input field when address value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Address</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("address-placeholder","Street name and number");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "address-placeholder": "Street name and number"
-        });</code></pre>
-                <h4 class="name" id="address-tooltip"><span class="type-signature"></span>address-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when focused on cardholder address input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("address-tooltip","Enter billing address");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "address-tooltip": "Enter billing address"
-        });</code></pre>
-                <h4 class="name" id="amount"><span class="type-signature"></span>amount<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    sale transaction amount
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("amount","88.50");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "amount": "88.50"
-        });</code></pre>
-                <h4 class="name" id="amount-placeholder"><span class="type-signature"></span>amount-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in amount input field when amount value has not yet been entered; amount input is shown if amount has not been set when displaying payment form
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Enter amount</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#amount">amount</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("amount-placeholder","Enter donation amount");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "amount-placeholder": "Enter donation amount"
-        });</code></pre>
-                <h4 class="name" id="amount-tooltip"><span class="type-signature"></span>amount-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when hovering over or focused on amount input field; amount input is shown if amount has not been set when displaying payment form
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#amount">amount</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("amount-tooltip","Enter amount in $xx.xx format");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "amount-tooltip": "Enter amount in $xx.xx format"
-        });</code></pre>
-                <h4 class="name" id="cancel-button-text"><span class="type-signature"></span>cancel-button-text<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear on the payment popup form's cancel button
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Cancel</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("cancel-button-text","Continue Shopping");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "cancel-button-text": "Continue Shopping"
-        });</code></pre>
-                <h4 class="name" id="card"><span class="type-signature"></span>card<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    last four digits of user-entered card number; (returns null if payment request has not yet been submitted)
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                </dl>
-                <h5>Example</h5>
-                <pre class="prettyprint"><code>var foo = Clearent.getProperty('card');</code></pre>
-                <h4 class="name" id="card-acceptence-label"><span class="type-signature"></span>card-acceptence-label<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in front of the image showing accepted cards (Visa, MasterCard, American Express, Discover, Diners Club, JCB).
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Pay using.</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("card-acceptence-label","We proudly accept");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "card-acceptence-label": "We proudly accept"
-        });</code></pre>
-                <h4 class="name" id="card-description-placeholder"><span class="type-signature"></span>card-description-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in CVC input field when CVC value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>CVC</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("cvc-placeholder","card security code");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "cvc-placeholder": "card security code"
-        });</code></pre>
-                <h4 class="name" id="card-description-tooltip"><span class="type-signature"></span>card-description-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when focused on card description input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("card-description-tooltip","Enter a nickname for this card");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "card-description-tooltip": "Enter a nickname for this card"
-        });</code></pre>
-                <h4 class="name" id="card-placeholder"><span class="type-signature"></span>card-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in card input field when card value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Card number</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("card-placeholder","Enter card number");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "card-placeholder": "Enter card number"
-        });</code></pre>
-                <h4 class="name" id="card-token-only"><span class="type-signature"></span>card-token-only<span class="type-signature"> :boolean</span></h4>
-
-                <div class="description">
-                    option to get a card token only for later use, does not perform sale
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">boolean</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>false</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("card-token-only", false);</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "card-token-only": false
-        });</code></pre>
-                <h4 class="name" id="card-tooltip"><span class="type-signature"></span>card-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when hovering over or focused on card number input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("card-tooltip","Enter card number as it appears on your card");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "card-tooltip": "Enter card number as it appears on your card"
-        });</code></pre>
-                <h4 class="name" id="city-placeholder"><span class="type-signature"></span>city-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in city input field when city value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>City</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("city-placeholder","Enter city");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "city-placeholder": "Enter city"
-        });</code></pre>
-                <h4 class="name" id="city-tooltip"><span class="type-signature"></span>city-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when focused on cardholder city input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("city-tooltip","Enter city of your billing address");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "city-tooltip": "Enter city of your billing address"
-        });</code></pre>
-                <h4 class="name" id="close-button-text"><span class="type-signature"></span>close-button-text<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear on the payment popup form's close button after successful transaction
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Close</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("close-button-text","Return to Page");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "close-button-text": "Return to Page"
-        });</code></pre>
-                <h4 class="name" id="cvc-placeholder"><span class="type-signature"></span>cvc-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in CVC input field when CVC value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Security Code</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("cvc-placeholder","card security code");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "cvc-placeholder": "card security code"
-        });</code></pre>
-                <h4 class="name" id="cvc-required"><span class="type-signature"></span>cvc-required<span class="type-signature"> :boolean</span></h4>
-
-                <div class="description">
-                    determines if user must enter a value for cvc input
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">boolean</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>false</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("cvc-required", false);</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "cvc-required": false
-        });</code></pre>
-                <h4 class="name" id="cvc-tooltip"><span class="type-signature"></span>cvc-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when hovering over or focused on card cvc input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Enter security code found on back of Visa/Mastercard/Discover or front of American Express.</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("cvc-tooltip","Enter security code from your card");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "cvc-tooltip": "Enter security code from your card"
-        });</code></pre>
-                <h4 class="name" id="error-message"><span class="type-signature"></span>error-message<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in the popup when transaction was unsuccessful.
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>We were unable to process your payment. Please verify your card details and try again or contact us to complete your order..</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("error-message","We were unable to process your payment. Please contact us to complete your order..");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "error-message": "We were unable to process your payment. Please contact us to complete your order.."
-        });</code></pre>
-                <h4 class="name" id="exp-date-placeholder"><span class="type-signature"></span>exp-date-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in expiration date input field when expiration date value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>MMYY</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("exp-date-placeholder","mm/yy");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "exp-date-placeholder": "mm/yy"
-        });</code></pre>
-                <h4 class="name" id="exp-date-tooltip"><span class="type-signature"></span>exp-date-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when hovering over or focused on card expiration date input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Enter 2-digit expiration month and 2-digit expiration year</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("exp-date-tooltip","Enter card expiration date in MM/YY format");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "exp-date-tooltip": "Enter card expiration date in MM/YY format"
-        });</code></pre>
-                <h4 class="name" id="first-name-placeholder"><span class="type-signature"></span>first-name-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in first name input field when first name has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>First name on card</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("first-name-placeholder","First name");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "first-name-placeholder": "First name"
-        });</code></pre>
-                <h4 class="name" id="first-name-tooltip"><span class="type-signature"></span>first-name-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when focused on cardholder first name input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("first-name-tooltip","Enter first name exactly as it appears on your card");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "first-name-tooltip": "Enter name exactly as it appears on your card"
-        });</code></pre>
-                <h4 class="name" id="heading-text"><span class="type-signature"></span>heading-text<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in the haader section of the payment popup form
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Enter Payment Information</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("heading-text","ACME Cogs and Widgets");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "heading-text": "ACME Cogs and Widgets"
-        });</code></pre>
-                <h4 class="name" id="invalid-message"><span class="type-signature"></span>invalid-message<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in the error bar when invalid form entries are found.
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Please correct invalid entries.</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("invalid-message","Fix errors below and try again.");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "invalid-message": "Fix errors below and try again."
-        });</code></pre>
-                <h4 class="name" id="last-name-placeholder"><span class="type-signature"></span>last-name-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in name input field when last name has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Last name on card</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("last-name-placeholder","Last name");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "last-name-placeholder": "Last name"
-        });</code></pre>
-                <h4 class="name" id="last-name-tooltip"><span class="type-signature"></span>last-name-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when focused on cardholder last name input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("last-name-tooltip","Enter last name exactly as it appears on your card");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "last-name-tooltip": "Enter name exactly as it appears on your card"
-        });</code></pre>
-                <h4 class="name" id="order-id"><span class="type-signature"></span>order-id<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    Optional property to set an order id that will be stored with the transaction. This is a searchable field when
-                    using Clearent's Virtual Terminal to research transaction data.
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(null)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("order-id","a12345");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "order-id": "a12345"
-        });</code></pre>
-                <h4 class="name" id="pay-button-parent"><span class="type-signature"></span>pay-button-parent<span class="type-signature"> :string|HTMLElement</span></h4>
-
-                <div class="description">
-                    The id or element reference of the element that the "Pay Now" button will be instantiated within. The newly created
-                    button is added as the last child of the specified element. If omitted, the "Pay Now" button will be instantiated at the location
-                    of the Clearent.payButton() method call.
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                        |
-                        <span class="param-type">HTMLElement</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>null</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("pay-button-parent","foo");</code></pre>
-                <pre class="prettyprint"><code>Clearent.setProperty("pay-button-parent",document.getElementById("foo"));</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "pay-button-parent":"foo"
-        });</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "pay-button-parent":document.getElementById("foo")
-        });</code></pre>
-                <h4 class="name" id="pay-button-text"><span class="type-signature"></span>pay-button-text<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear on the button that launches the payment popup form
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Pay Now</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("pay-button-text","Show Payment Form");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "pay-button-text": "Show Payment Form"
-        });</code></pre>
-                <h4 class="name" id="pk"><span class="type-signature"></span>pk<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    public key
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>null</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("pk","abcdefg123456");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "pk": "abcdefg123456"
-        });</code></pre>
-                <h4 class="name" id="require-billing-address"><span class="type-signature"></span>require-billing-address<span class="type-signature"> :boolean</span></h4>
-
-                <div class="description">
-                    determines if billing address is shown and required on payment popup; if set to true you do not need to set show-billing-address property
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">boolean</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>false</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#show-billing-address">show-billing-address</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("require-billing-address", true);</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "require-billing-address": true
-        });</code></pre>
-                <h4 class="name" id="save-card-option-text"><span class="type-signature"></span>save-card-option-text<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to show next to "save this card" option checkbox
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Save this card for future use</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#show-save-card-option">show-save-card-option</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("save-card-option-text","Save this card");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "save-card-option-text": "Save this card"
-        });</code></pre>
-                <h4 class="name" id="show-billing-address"><span class="type-signature"></span>show-billing-address<span class="type-signature"> :boolean</span></h4>
-
-                <div class="description">
-                    determines if billing address is shown on payment popup
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">boolean</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>false</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#require-billing-address">require-billing-address</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("show-billing-address", true);</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "show-billing-address": true
-        });</code></pre>
-                <h4 class="name" id="show-save-card-option"><span class="type-signature"></span>show-save-card-option<span class="type-signature"> :boolean</span></h4>
-
-                <div class="description">
-                    determines if "save this card" option checkbox is available
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">boolean</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>false</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#save-card-option-text">save-card-option-text</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("show-save-card-option", true);</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "show-save-card-option": true
-        });</code></pre>
-                <h4 class="name" id="state-placeholder"><span class="type-signature"></span>state-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in state input field when state value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>State</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("state-placeholder","Select state");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "state-placeholder": "Select state"
-        });</code></pre>
-                <h4 class="name" id="state-tooltip"><span class="type-signature"></span>state-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when focused on cardholder state input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("state-tooltip","Enter name exactly as it appears on your card");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "state-tooltip": "Enter name exactly as it appears on your card"
-        });</code></pre>
-                <h4 class="name" id="submit-pay-button-text"><span class="type-signature"></span>submit-pay-button-text<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear on the payment popup form's submit button; {$} is replaced with amount at runtime (if set)
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Pay ${$} Now</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#amount">amount</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("submit-pay-button-text","Make payment of ${$}");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "submit-pay-button-text": "Make payment of ${$}"
-        });
-        outputs (assume amount == 22.50):
-        payment form submit button with text: "Make payment of $22.50"</code></pre>
-                <h4 class="name" id="submit-pay-method-button-text"><span class="type-signature"></span>submit-pay-method-button-text<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear on the add payment method popup form's submit button
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Save Card</li>
-                        </ul>
-                    </dd>
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#amount">amount</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("submit-pay-method-button-text","Save Payment Method");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "submit-pay-method-button-text": "Save Payment Method"
-        });</code></pre>
-                <h4 class="name" id="success-message"><span class="type-signature"></span>success-message<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in the popup when transaction is successful.
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Payment was successful.</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("success-message","Payment accepted.");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "success-message": "Payment accepted."
-        });</code></pre>
-                <h4 class="name" id="zip-placeholder"><span class="type-signature"></span>zip-placeholder<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    text to appear in zip code input field when zip code value has not yet been entered
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>Zip</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("zip-placeholder","Zip code");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "zip-placeholder": "Zip code"
-        });</code></pre>
-                <h4 class="name" id="zip-tooltip"><span class="type-signature"></span>zip-tooltip<span class="type-signature"> :string</span></h4>
-
-                <div class="description">
-                    tooltip to appear when focused on cardholder zip code input field
-                </div>
-                <h5>Type:</h5>
-                <ul>
-                    <li>
-                        <span class="param-type">string</span>
-                    </li>
-                </ul>
-                <dl class="details">
-                    <dt class="tag-default">Default Value:</dt>
-                    <dd class="tag-default">
-                        <ul class="dummy">
-                            <li>(empty string)</li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Examples</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("zip-tooltip","Enter your billing zip/postal code");</code></pre>
-    <pre class="prettyprint"><code>Clearent.payButton({
-        "zip-tooltip": "Enter your billing zip/postal code"
-        });</code></pre>
-                <h3 class="subsection-title">Methods</h3>
-                <h4 class="name" id="addToken"><span class="type-signature"></span>addToken<span class="signature">(obj)</span><span class="type-signature"></span></h4>
-
-                <div class="description">
-                    Adds a customer saved token for option of "Select saved card"
-                </div>
-                <h5>Parameters:</h5>
-                <table class="params">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th class="last">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="name"><code>obj</code></td>
-                        <td class="type">
-                            <span class="param-type">obj</span>
-                        </td>
-                        <td class="description last">object containing token properties.
-                            <h6>Properties</h6>
-                            <table class="params">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Type</th>
-                                    <th>Attributes</th>
-                                    <th class="last">Description</th>
-                                </tr>
-                                </thead>
-                                <tbody>
-                                <tr>
-                                    <td class="name"><code>token</code></td>
-                                    <td class="type">
-                                        <span class="param-type">string</span>
-                                    </td>
-                                    <td class="attributes">
-                                    </td>
-                                    <td class="description last">The value of the card token to use.</td>
-                                </tr>
-                                <tr>
-                                    <td class="name"><code>cardType</code></td>
-                                    <td class="type">
-                                        <span class="param-type">string</span>
-                                    </td>
-                                    <td class="attributes">
-                                        &lt;optional><br>
-                                    </td>
-                                    <td class="description last">The card type (MasterCard, Visa, etc) of the specified token.</td>
-                                </tr>
-                                <tr>
-                                    <td class="name"><code>description</code></td>
-                                    <td class="type">
-                                        <span class="param-type">string</span>
-                                    </td>
-                                    <td class="attributes">
-                                        &lt;optional><br>
-                                    </td>
-                                    <td class="description last">The description of the card to display to the user when picking a saved card.
-                                        ex. "Business travel card". If not provided, the card will appear in the selection as "Card ending in ####" where
-                                        #### is the last four digits of the saved card.
-                                    </td>
-                                </tr>
-                                </tbody>
-                            </table>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dl class="details">
-                </dl>
-                <h5>Example</h5>
-
-    <pre class="prettyprint"><code>Clearent.addToken({
-        "token":"1111111111111111111111",
-        "cardType":"Visa",
-        "description":"Business travel card"
-        });</code></pre>
-                <h4 class="name" id="getProperty"><span class="type-signature"></span>getProperty<span class="signature">(property)</span><span class="type-signature"></span></h4>
-
-                <div class="description">
-                    Gets a property of the Clearent HPP popup
-                </div>
-                <h5>Parameters:</h5>
-                <table class="params">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th class="last">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="name"><code>property</code></td>
-                        <td class="type">
-                            <span class="param-type">string</span>
-                        </td>
-                        <td class="description last">The property name to get.</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dl class="details">
-                </dl>
-                <h5>Example</h5>
-                <pre class="prettyprint"><code>Clearent.getProperty("amount");</code></pre>
-                <h4 class="name" id="payButton"><span class="type-signature"></span>payButton<span class="signature">(obj)</span><span class="type-signature"></span></h4>
-
-                <div class="description">
-                    Creates the payment button (Pay Now) that is used to launch the popup payment form
-                </div>
-                <h5>Parameters:</h5>
-                <table class="params">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th class="last">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="name"><code>obj</code></td>
-                        <td class="type">
-                            <span class="param-type">object</span>
-                        </td>
-                        <td class="description last">(optional) JSON formatted object of properties to set when instantiating the payment button.</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dl class="details">
-                </dl>
-                <h5>Example</h5>
-
-    <pre class="prettyprint"><code>// must include clearent script first
-        &lt;script type="text/javascript" src="js/clearent.js">&lt;/script>
-        &lt;script>
-        // create payment button
-        Clearent.payButton({
-        "amount": "22.50" // set amount properety at this time (optional)
-        });
-        &lt;/script></code></pre>
-                <h4 class="name" id="setProperty"><span class="type-signature"></span>setProperty<span class="signature">(property, value)</span><span class="type-signature"></span></h4>
-
-                <div class="description">
-                    Sets a property of the Clearent HPP popup
-                </div>
-                <h5>Parameters:</h5>
-                <table class="params">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th class="last">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="name"><code>property</code></td>
-                        <td class="type">
-                            <span class="param-type">string</span>
-                        </td>
-                        <td class="description last">The property name to set.</td>
-                    </tr>
-                    <tr>
-                        <td class="name"><code>value</code></td>
-                        <td class="type">
-                            <span class="param-type">string</span>
-                        </td>
-                        <td class="description last">The value of the property being set.</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dl class="details">
-                </dl>
-                <h5>Example</h5>
-                <pre class="prettyprint"><code>Clearent.setProperty("amount","22.50");</code></pre>
-                <h3 class="subsection-title">Type Definitions</h3>
-                <h4 class="name" id="ClearentOnError"><span class="type-signature"></span>ClearentOnError<span class="signature">(responseRaw, ResponseJSON)</span><span class="type-signature"></span></h4>
-
-                <div class="description">
-                    Callback on payment response; if defined on host this
-                    function is called only if the transaction was not successful.
-                    The function will receive a raw server response as well as a
-                    JSON-formatted response data object.
-                </div>
-                <h5>Parameters:</h5>
-                <table class="params">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th class="last">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="name"><code>responseRaw</code></td>
-                        <td class="type">
-                            <span class="param-type">string</span>
-                        </td>
-                        <td class="description last">Raw string from server.</td>
-                    </tr>
-                    <tr>
-                        <td class="name"><code>ResponseJSON</code></td>
-                        <td class="type">
-                            <span class="param-type">object</span>
-                        </td>
-                        <td class="description last">JSON formatted response data of payment call.</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dl class="details">
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#ClearentOnSuccess">ClearentOnSuccess</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Example</h5>
-
-    <pre class="prettyprint"><code>function ClearentOnError(responseRaw,ResponseJSON){
-        console.log("transaction failed");
-        console.log(responseRaw);
-        console.log(ResponseJSON);
-        }</code></pre>
-                <h4 class="name" id="ClearentOnSuccess"><span class="type-signature"></span>ClearentOnSuccess<span class="signature">(responseRaw, ResponseJSON)</span><span class="type-signature"></span></h4>
-
-                <div class="description">
-                    Callback on payment response; if defined on host this
-                    function is called only if the transaction was not successful.
-                    The function will receive a raw server response as well as a
-                    JSON-formatted response data object.
-                </div>
-                <h5>Parameters:</h5>
-                <table class="params">
-                    <thead>
-                    <tr>
-                        <th>Name</th>
-                        <th>Type</th>
-                        <th class="last">Description</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td class="name"><code>responseRaw</code></td>
-                        <td class="type">
-                            <span class="param-type">string</span>
-                        </td>
-                        <td class="description last">Raw string from server.</td>
-                    </tr>
-                    <tr>
-                        <td class="name"><code>ResponseJSON</code></td>
-                        <td class="type">
-                            <span class="param-type">object</span>
-                        </td>
-                        <td class="description last">JSON formatted response data of payment call.</td>
-                    </tr>
-                    </tbody>
-                </table>
-                <dl class="details">
-                    <dt class="tag-see">See:</dt>
-                    <dd class="tag-see">
-                        <ul>
-                            <li><a href="global.html#ClearentOnError">ClearentOnError</a></li>
-                        </ul>
-                    </dd>
-                </dl>
-                <h5>Example</h5>
-
-    <pre class="prettyprint"><code>function ClearentOnSuccess(responseRaw,ResponseJSON){
-        console.log("transaction successful");
-        // raw response can be sent back to server to verify that
-        // response signature matches and ressponse came from Clearent
-        console.log(responseRaw);
-        console.log(ResponseJSON);
-        }</code></pre>
-            </article>
-        </div>
     </section>
     <footer>
         <p>This project is maintained by <a href="https://github.com/Clearent">Clearent</a></p>
