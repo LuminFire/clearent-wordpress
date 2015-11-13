@@ -53,7 +53,6 @@ code{
   padding:5px;
   border-radius: 3px;
   background-color: #EBEBEB;
-  margin: 30px 0;
   display:inline-block;
 }
 
@@ -68,6 +67,23 @@ code{
   -webkit-box-shadow: 6px 6px 15px -2px rgba(0,0,0,0.75);
   -moz-box-shadow: 6px 6px 15px -2px rgba(0,0,0,0.75);
   box-shadow: 6px 6px 15px -2px rgba(0,0,0,0.75);
+}
+
+table.codes{
+  border: 1px solid #e5e5e5;
+  border-radius: 5px;
+
+}
+
+table.codes th,
+table.codes td
+{
+  border: 1px solid #e5e5e5;
+}
+
+table.codes ul{
+  margin:0;
+  padding:0 0 0 15px;
 }
 
 blockquote {

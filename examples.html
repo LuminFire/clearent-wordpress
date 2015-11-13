@@ -27,329 +27,324 @@
       </header>
       <section>
 
-        <h3>Clearent WordPress Plugin is Highly Configurable</h3>
+        <h3>Shortcode</h3>
 
-        <p>You can get your payments working with just a tiny bit of shortcode.</p>
+        <p>The Clearent Payments plugin uses <a href="https://codex.wordpress.org/Shortcode">Wordpress shortcode</a> to allow you to easily add payment forms to any WordPress page.
+          The shortcode for Clearent Payments plugin is clearent_pay_form and the only required attribute is the sale amount.</p>
 
-        <table border="1">
+        <p>This basic shortcode . . . </p>
+
+        <code>[clearent_pay_form amount="22.50"]</code>
+
+        <p>Produces this form . . . </p>
+
+        <img class="framed" src="images/example01.png"/>
+
+        <p></p>
+
+        <h3>Shortcode Attributes</h3>
+
+        <p>The tables below list the attributes supported by the Clearent Payments plugin.</p>
+
+        <h4>Required Attributes</h4>
+
+        <table class="codes">
           <tr>
             <th>Shortcode attribute</th>
             <th>Default value</th>
+            <th>Example</th>
             <th>Notes</th>
-            <th></th>
           </tr>
           <tr>
             <td>amount</td>
             <td>0</td>
+            <td>amount="88.50"</td>
             <td>Value is required</td>
-            <td></td>
+          </tr>
+        </table>
+
+        <h4>Optional Input Fields</h4>
+
+        <table class="codes">
+          <tr>
+            <th>Shortcode attribute</th>
+            <th>Default value</th>
+            <th>Example</th>
+            <th>Notes</th>
           </tr>
           <tr>
-            <th>// labels</th>
+            <td>invoice</td>
+            <td> false</td>
+            <td>invoice="true"</td>
+            <td rowspan="7" valign="top">
+              <ul>
+                <li>If "false", field is not shown</li>
+                <li>If "true", field is shown for user input</li>
+                <li>If any other value is supplied, no field is displayed but the information is sent with the transaction request and saved in the transaction log.</li>
+              </ul>
+
+            </td>
+          </tr>
+          <tr>
+            <td>purchase_order</td>
+            <td>false</td>
+            <td>purchase_order="12345"</td>
+          </tr>
+          <tr>
+            <td>email_address</td>
+            <td>false</td>
+            <td>email_address="bob@email.com"</td>
+          </tr>
+          <tr>
+            <td>customer_id</td>
+            <td> false</td>
+            <td>customer_id="7890123"</td>
+          </tr>
+          <tr>
+            <td>order_id</td>
+            <td> false</td>
+            <td>order_id="45645656"</td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td> false</td>
+            <td>description="true"</td>
+          </tr>
+          <tr>
+            <td>comments</td>
+            <td> false</td>
+            <td>comments="true"</td>
+          </tr>
+       </table>
+
+        <h4>Configuring Field Labels</h4>
+
+        <p>The text of all field labels can be changed as needed using shortcode attributes.</p>
+
+        <table class="codes">
+          <tr>
+            <th>Shortcode attribute</th>
             <th>Default value</th>
-            <th>Notes</th>
-            <th></th>
+            <th>Example</th>
           </tr>
           <tr>
             <td>title</td>
             <td> Complete Transaction Details Below</td>
-            <td></td>
-            <td></td>
+            <td>title="Payment Details"</td>
           </tr>
           <tr>
             <td>button_text</td>
             <td> Pay Now</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>card_label</td>
             <td> Card Number</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>exp_date_label</td>
             <td> Card Expiration Date</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>csc_label</td>
             <td> Card Security Code</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>invoice_label</td>
             <td> Invoice Number</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>purchase_order_label</td>
             <td> Purchase Order</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>email_address_label</td>
             <td> Email Address</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>customer_id_label</td>
             <td> Customer ID</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>order_id_label</td>
             <td> Order ID</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>description_label</td>
             <td> Description</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>comments_label</td>
             <td> Comments</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>billing_address_label</td>
             <td> Billing Address</td>
-            <td>Only applicable if billing fields are shown</td>
-            <td></td>
+            <td>billing_address_label="Billing Information"</td>
           </tr>
           <tr>
             <td>billing_first_name_label</td>
             <td> First Name</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>billing_last_name_label</td>
             <td> Last Name</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>billing_company_label</td>
             <td> Company</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>billing_street_label</td>
             <td> Address</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>billing_street2_label</td>
             <td> Address Line 2</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>billing_city_label</td>
             <td> City</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>billing_state_label</td>
             <td> State</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>billing_zip_label</td>
             <td> Zip</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>billing_country_label</td>
             <td> Country</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>billing_phone_label</td>
             <td> Phone</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>shipping_address_label</td>
             <td> Shipping</td>
-            <td>Only applicable if shipping fields are shown</td>
-            <td></td>
+            <td>shipping_address_label="Billing Information"</td>
           </tr>
           <tr>
             <td>billing_is_shipping_label</td>
             <td> Same as billing address</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>shipping_first_name_label</td>
             <td> First Name</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>shipping_last_name_label</td>
             <td> Last Name</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>shipping_company_label</td>
             <td> Company</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>shipping_street_label</td>
             <td> Address</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>shipping_street2_label</td>
             <td> Address Line 2</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>shipping_city_label</td>
             <td> City</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>shipping_state_label</td>
             <td> State</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>shipping_zip_label</td>
             <td> Zip</td>
-            <td></td>
             <td></td>
           </tr>
           <tr>
             <td>shipping_country_label</td>
             <td> Country</td>
             <td></td>
-            <td></td>
           </tr>
           <tr>
             <td>shipping_phone_label</td>
             <td> Phone</td>
             <td></td>
-            <td></td>
           </tr>
-          <tr>
-            <th>// optional fields</th>
+        </table>
+
+
+
+
+
+        <h4>Billing Address and Shipping Address Attributes</h4>
+
+        <table class="codes">
+            <tr>
+            <th>Shortcode Attribute</th>
             <th>Default value</th>
             <th>Notes</th>
-            <th></th>
-          </tr>
-          <tr>
-            <td>invoice</td>
-            <td> false</td>
-            <td>If "true", field is shown</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>purchase_order</td>
-            <td> false</td>
-            <td>If "false", field is not shown</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>email_address</td>
-            <td> false</td>
-            <td>If any other value, field is hidden with value set</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>customer_id</td>
-            <td> false</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>order_id</td>
-            <td> false</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>description</td>
-            <td> false</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>comments</td>
-            <td> false</td>
-            <td></td>
-            <td></td>
-          </tr>
-          <tr>
-            <th>// shipping/billing</th>
-            <th>Default value</th>
-            <th>Notes</th>
-            <th></th>
           </tr>
           <tr>
             <td>billing_address</td>
             <td> false</td>
             <td>"true" to show all billing address fields (not needed if require_billing_address=true)</td>
-            <td></td>
-          </tr>
-          <tr>
-            <td>shipping_address</td>
-            <td> false</td>
-            <td>"true" to show all shipping address fields (not needed if require_shipping_address=true)</td>
-            <td></td>
-          </tr>
-          <tr>
-            <th>// field options</th>
-            <th>Default value</th>
-            <th>Notes</th>
-            <th></th>
           </tr>
           <tr>
             <td>require_billing_address</td>
             <td> false</td>
             <td>"true" to show and require billing address fields</td>
-            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_address</td>
+            <td> false</td>
+            <td>"true" to show all shipping address fields (not needed if require_shipping_address=true)</td>
           </tr>
           <tr>
             <td>require_shipping_address</td>
             <td> false</td>
             <td>"true" to show and require shipping address fields</td>
-            <td></td>
           </tr>
           <tr>
             <td>require_csc</td>
             <td> true</td>
             <td></td>
-            <td></td>
           </tr>
+        </table>
+
+
+        <table class="codes">
           <tr>
             <th>// optional fields</th>
             <th>Default value</th>
@@ -484,6 +479,20 @@
           </tr>
         </table>
 
+        <h4>Miscellaneous Attributes</h4>
+
+        <table class="codes">
+          <tr>
+            <th>Shortcode Attribute</th>
+            <th>Default value</th>
+            <th>Notes</th>
+          </tr>
+          <tr>
+            <td>require_csc</td>
+            <td> true</td>
+            <td>Card Security Code is required by default. Setting to false makes this field input optional. The field is always displayed on screen.</td>
+          </tr>
+        </table>
 
         <p></p>
 
