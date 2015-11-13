@@ -22,24 +22,24 @@
 
         <menu>
             <a href="index.html">Overview</a>
-            <a href="configuration.html">Installation / Configuration</a>
+            <a href="configuration.html" class="active">Installation / Configuration</a>
             <a href="examples.html">Examples</a>
         </menu>
 
     </header>
     <section>
 
-        <h3>Requirements</h3>
+        <h3>Security Requirements</h3>
 
         <ul>
             <li>Your WordPress site must use HTTPS.</li>
-            <li><strong>Do not publish your API Key or share it with anyone.</strong></li>
-            <li><strong>Never store or displayed non-encrypted card data anywhere on your site.</strong></li>
+            <li>Do not publish your API Key or share it with anyone.</li>
+            <li>Never store or displayed non-encrypted card data anywhere on your site.</li>
         </ul>
 
         <h3>Installation</h3>
 
-        <h4>Using The WordPress Dashboard</h4>
+        <h4>Installing via WordPress Dashboard</h4>
 
         <ul>
             <li>Navigate to "Plugins" -> Click "Add New" button</li>
@@ -47,6 +47,10 @@
             <li>Click "Install Now"</li>
             <li>Click the "Activate Plugin" link</li>
         </ul>
+
+        (<a href="step_by_step_install.html">Click Here for Step by Step Installation Instructions</a>)
+
+        <p></p>
 
         <h4>Uploading via WordPress Dashboard</h4>
 
@@ -64,10 +68,70 @@
 
         <h4>Settings</h4>
 
+        <p>On the plugins page, click the Settings link for the Clearent Payments plugin.</p>
+
+        <img src="images/install4.png" />
+
+        <p></p>
+        <p>This will take you to the settings page for the Clearent Payments plugin.</p>
+
+        <img src="images/install5.png" />
+        <p></p>
+
+        <ul>
+            <li><strong>Environment:</strong> By default, the Clearent Payments plugin will perform all transactions against the production environment.
+                The plugin may be switched to sandbox environment for testing purposes.
+                <ul>
+                    <li><strong>Sandbox:</strong> You can run test transactions in Sandbox mode to verify your pages work, successful transactions are
+                        logged and the user is directed to your success page when the transaction is complete.</li>
+                    <li><strong>Production:</strong> This mode uses your life API key to run real transactions in your production environment.</li>
+                </ul>
+            </li>
+            <li><strong>Success URL:</strong> This dropdown will list all of the pages on your site. You can choose a page to redirect your users to
+                after a successful transactions. If no pages is specified the user is redirected to the site's homepage.</li>
+            <li><strong>API Keys:</strong> <a href="http://www.clearent.com/merchants/contact-us/">Contact Clearent to request sandbox api key</a> for
+                testing and production key for live sales.
+                <ul>
+                    <li><strong>Sandbox API Key:</strong> This key is used to run test transactions when the environment is set to Sandbox mode. This
+                        key will not work in Production mode.</li>
+                    <li><strong>Production API Key:</strong> This key is used to run live transactions when the environment is set to Production mode. This
+                        key will not work in Sandbox mode.</li>
+                </ul>
+            </li>
+            <li><strong>Debug Logging:</strong> This tool can be used to help diagnose issues when using the plugin. It may also be used to help diagnose
+                production issues after your site has been deployed. When debugging is enabled, the debug log is created at:
+                <br><strong>/[plugin directory location]/clearent-payments/log/debug.log</strong>
+                <p></p>
+                <ul>
+                    <li><strong>Disabled:</strong> (default) Debug logging is turned off.</li>
+                    <li><strong>Enabled:</strong> Debug logging is turned on.</li>
+                </ul>
+            </li>
+        </ul>
+
         <h4>Transaction History</h4>
+
+        <p>The transaction history tab lists successful transactions in the last 90 days. Most recent transactions are listed first. You can do advanced searching
+        and querying of past transactions using Clearent's Virtual Terminal. Your Clearent representative can help you get started using our Virtual Terminal.</p>
+
+        <p></p>
+        <img src="images/install6.png" />
+        <p></p>
+
+        <p>When you click on a transaction in the list you will get a popup with additional transaction details including all information captured during the transaction.</p>
+
+        <p></p>
+        <img src="images/install7.png" />
+        <p></p>
 
         <h4>Pages Using Plugin</h4>
 
+        <p>The "Pages Using Plugin" tab is provided to help you quickly identify pages in your site using the Clearent Payments plugin. All pages using the plugin
+            are listed as links what will take you directly to the respective pages.</p>
+
+        <p></p>
+        <img src="images/install8.png" />
+        <p></p>
 
         <h3>Browser Support</h3>
 
@@ -83,6 +147,8 @@
             request in logged in the transaction log (see above). Provide this ID to Clearent if you need help debugging failed transaction errors.</p>
 
         <p>Example Exchange ID from transaction log: <code>ID-CLASBDKRGW01-cgw01-41232-1446575925523-0-2261</code></p>
+
+        <p>Additionally, debug logging (described above) may be turned out to help diagnose issues when developing and testing this plugin with your site's pages.</p>
 
 
     </section>
