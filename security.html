@@ -21,9 +21,8 @@
 
         <menu>
             <a href="index.html">Overview</a>
-            <a class="active" href="security.html">Security Considerations</a>
-            <a href="global.html">Configuration</a>
-            <a href="branding.html">Styling / Branding</a>
+            <a href="security.html">Security Considerations</a>
+            <a href="configuration.html">Installation / Configuration</a>
             <a href="examples.html">Examples</a>
         </menu>
 
@@ -65,7 +64,7 @@
 
         <p>If the transaction was not successful, the browser will receive a response from the Clearent transaction processing portal containing an error message. The user
             will see a generic error message: <strong>"We were unable to process your payment. Please verify your card details and try again or contact us to complete your order."</strong>
-            This <a href="global.html">error message can be configured</a> with different text if necessary.
+            This <a href="configuration.html">error message can be configured</a> with different text if necessary.
             </p>
 
         <p>For failed transactions, the application looks for a callback function named "ClearentOnError" and if found,
@@ -129,7 +128,7 @@
         <p>By default, the card security code (CSC, CID, CVC, CVV, CVV2) is required for all transactions unless the merchant is storing and presenting card tokens to the user</p>
 
         <ul>
-            <li> If required (see <a href="global.html">Configuration</a>), security code must be 3 or 4 digits</li>
+            <li> If required (see <a href="configuration.html">Configuration</a>), security code must be 3 or 4 digits</li>
         </ul>
     </section>
     <footer>
