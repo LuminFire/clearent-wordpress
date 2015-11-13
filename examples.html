@@ -20,7 +20,6 @@
 
         <menu>
           <a href="index.html">Overview</a>
-          <a href="security.html">Security Considerations</a>
           <a href="configuration.html">Installation / Configuration</a>
           <a href="examples.html">Examples</a>
         </menu>
@@ -28,10 +27,467 @@
       </header>
       <section>
 
-        <p></p>
-        <p>After you have looked at some examples below, be sure to <a href="https://hpp-sb.clearent.net/" target="_blank">head on over to our live demo page and try out your own examples!</a></p>
+        <h3>Clearent WordPress Plugin is Highly Configurable</h3>
 
-        <h3>Basic "One Line of Code" Example</h3>
+        <p>You can get your payments working with just a tiny bit of shortcode.</p>
+
+        <table border="1">
+          <tr>
+            <th>Shortcode attribute</th>
+            <th>Default value</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>amount</td>
+            <td>0</td>
+            <td>Value is required</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>// labels</th>
+            <th>Default value</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>title</td>
+            <td> Complete Transaction Details Below</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>button_text</td>
+            <td> Pay Now</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>card_label</td>
+            <td> Card Number</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>exp_date_label</td>
+            <td> Card Expiration Date</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>csc_label</td>
+            <td> Card Security Code</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>invoice_label</td>
+            <td> Invoice Number</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>purchase_order_label</td>
+            <td> Purchase Order</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>email_address_label</td>
+            <td> Email Address</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>customer_id_label</td>
+            <td> Customer ID</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>order_id_label</td>
+            <td> Order ID</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>description_label</td>
+            <td> Description</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>comments_label</td>
+            <td> Comments</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_address_label</td>
+            <td> Billing Address</td>
+            <td>Only applicable if billing fields are shown</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_first_name_label</td>
+            <td> First Name</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_last_name_label</td>
+            <td> Last Name</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_company_label</td>
+            <td> Company</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_street_label</td>
+            <td> Address</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_street2_label</td>
+            <td> Address Line 2</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_city_label</td>
+            <td> City</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_state_label</td>
+            <td> State</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_zip_label</td>
+            <td> Zip</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_country_label</td>
+            <td> Country</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_phone_label</td>
+            <td> Phone</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_address_label</td>
+            <td> Shipping</td>
+            <td>Only applicable if shipping fields are shown</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>billing_is_shipping_label</td>
+            <td> Same as billing address</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_first_name_label</td>
+            <td> First Name</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_last_name_label</td>
+            <td> Last Name</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_company_label</td>
+            <td> Company</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_street_label</td>
+            <td> Address</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_street2_label</td>
+            <td> Address Line 2</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_city_label</td>
+            <td> City</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_state_label</td>
+            <td> State</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_zip_label</td>
+            <td> Zip</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_country_label</td>
+            <td> Country</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_phone_label</td>
+            <td> Phone</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>// optional fields</th>
+            <th>Default value</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>invoice</td>
+            <td> false</td>
+            <td>If "true", field is shown</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>purchase_order</td>
+            <td> false</td>
+            <td>If "false", field is not shown</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>email_address</td>
+            <td> false</td>
+            <td>If any other value, field is hidden with value set</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>customer_id</td>
+            <td> false</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>order_id</td>
+            <td> false</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>description</td>
+            <td> false</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>comments</td>
+            <td> false</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>// shipping/billing</th>
+            <th>Default value</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>billing_address</td>
+            <td> false</td>
+            <td>"true" to show all billing address fields (not needed if require_billing_address=true)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>shipping_address</td>
+            <td> false</td>
+            <td>"true" to show all shipping address fields (not needed if require_shipping_address=true)</td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>// field options</th>
+            <th>Default value</th>
+            <th>Notes</th>
+            <th></th>
+          </tr>
+          <tr>
+            <td>require_billing_address</td>
+            <td> false</td>
+            <td>"true" to show and require billing address fields</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>require_shipping_address</td>
+            <td> false</td>
+            <td>"true" to show and require shipping address fields</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>require_csc</td>
+            <td> true</td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <th>// optional fields</th>
+            <th>Default value</th>
+            <th>billing_address=true</th>
+            <th>require_billing_address=true</th>
+          </tr>
+          <tr>
+            <td>billing-first-name</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>billing-last-name</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>billing-company</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed</td>
+          </tr>
+          <tr>
+            <td>billing-street</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>billing-street2</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed</td>
+          </tr>
+          <tr>
+            <td>billing-city</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>billing-state</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>billing-zip</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>billing-country</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>billing-phone</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <th>optional fields</th>
+            <th>Default value</th>
+            <th>shipping_address=true</th>
+            <th>require_shipping_address=true</th>
+          </tr>
+          <tr>
+            <td>shipping-first-name</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>shipping-last-name</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>shipping-company</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed</td>
+          </tr>
+          <tr>
+            <td>shipping-street</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>shipping-street2</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed</td>
+          </tr>
+          <tr>
+            <td>shipping-city</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>shipping-state</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>shipping-zip</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>shipping-country</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+          <tr>
+            <td>shipping-phone</td>
+            <td>Not displayed</td>
+            <td>Displayed</td>
+            <td>Displayed and required</td>
+          </tr>
+        </table>
+
+
+        <p></p>
+
+        <h3>Basic Fields</h3>
 
         <p>At a bare minimum, you must:</p>
 
@@ -45,199 +501,39 @@
 
         <p>This code . . . </p>
 
-        <xmp>
-        <script type="text/javascript" src="https://hpp-sb.clearent.net/js/clearent.js"></script>
-        <script>
-          Clearent.payButton({"pk":"307a301406072a864.....8ce3d076fde833c136b", "amount": "64.50"});
-        </script>
-        </xmp>
+        <code>shortcode here</code>
 
-        <p>Produces a "Pay Now" button on the page (<a href="configuration.html">the "Pay Now" text is configurable</a>) </p>
+        <p>Produces this form . . . </p>
 
         <img src="images/paynow.png"/>
 
-        <p>That when clicked produces this popup:</p>
-
-        <img src="images/example1.png"/>
 
         <p></p>
-        <h3>Flexible Configuration</h3>
-
-        <p>Configuration options can be grouped together when calling the <code>payButton()</code> method or added separately. The following are all equivalent:</p>
-
-        <xmp>
-        <script>
-          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
-          Clearent.setProperty("heading-text", "Complete payment details below");
-          Clearent.setProperty("show-billing-address", true);
-          Clearent.payButton({"amount": "64.50"});
-        </script>
-        </xmp>
-
-        <xmp>
-        <script>
-          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
-          Clearent.setProperty("heading-text", "Complete payment details below");
-          Clearent.setProperty("show-billing-address", true);
-          Clearent.setProperty("amount", "64.50");
-          Clearent.payButton();
-        </script>
-        </xmp>
-
-        <xmp>
-        <script>
-          Clearent.payButton({
-            "pk": "307a301406072a864.....8ce3d076fde833c136b",
-            "heading-text": "Complete payment details below",
-            "show-billing-address": true,
-            "amount": "64.50"
-          });
-        </script>
-        </xmp>
-
-        <p></p>
-        <h3>Configuring Optional Billing Address and Heading Text</h3>
-
-        <p>As you saw in the <a href="configuration.html">configuration page</a> there are many options that can be configured. Below we are adding an optional billing address and
-          changing the heading text of the popup. </p>
-
-        <xmp>
-        <script>
-          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
-          Clearent.setProperty("heading-text", "Complete payment details below");
-          Clearent.setProperty("show-billing-address", true);
-          Clearent.payButton({"amount": "64.50"});
-        </script>
-        </xmp>
-
-        <img src="images/example2.png"/>
-
-        <p></p>
-        <p>The Hosted Payment Page is responsive and designed use the screen efficiently. The same screen as above but viewed on a larger, non-mobile screen: </p>
-
-        <img src="images/example3.png"/>
-
-        <p></p>
-
-        <h3>Using Card Tokens</h3>
-
-        <h4>Performing a sale transaction and saving card for future use.</h4>
-
-        <p>By setting the "show-save-card-option", your customers can save their card data securely in our vault. A token is returned from the sale request that can be stored on your servers without
-          storing sensitive card data. </p>
-
-        <xmp>
-        <script>
-          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
-          Clearent.setProperty("show-save-card-option", true);
-          Clearent.payButton({"amount": "64.50"});
-        </script>
-        </xmp>
-
-        <p>Your customer would then have the option of saving their card information for future purchases. </p>
-
-        <img src="images/example4.png"/>
-
-        <p></p>
-        <p>They can even save a meaningful name for their card: </p>
-
-        <img src="images/example5.png"/>
-
-        <p></p>
-
-        <h4>Performing a token-only request.</h4>
-
-        <p></p>
-
-        <p>Depending on how your site is designed, you may have a need to save a card token without doing a sale.</p>
+        <h3>Additional Fields</h3>
 
         <p>This code . . . </p>
 
-        <xmp>
-        <script>
-          Clearent.payButton({"pk": "307a301406072a864.....8ce3d076fde833c136b",
-            "card-token-only": true,
-            "heading-text": "Enter card information below",
-            "card-acceptence-label": "",
-            "amount":0
-          });
-        </script>
-        </xmp>
+        <code>shortcode here</code>
 
-        <p>Produces an "Add payment method" button on the page (<a href="configuration.html">the "Add payment method" text is configurable</a>) </p>
+        <p>Produces this form . . . </p>
 
-        <img src="images/add-pay-method-1.png"/>
-
-        <p>That when clicked produces this popup:</p>
-
-        <img src="images/add-pay-method-2.png"/>
+        <img src="images/paynow.png"/>
 
         <p></p>
 
-        <h4>Using card tokens.</h4>
+        <h3>Configuring Optional Billing Address and Shipping Address</h3>
+
+        <p>...</p>
+
+        <p>This code . . . </p>
+
+        <code>shortcode here</code>
+
+        <p>Produces this form . . . </p>
+
+        <img src="images/paynow.png"/>
 
         <p></p>
-
-        <p>The next time the customer logs into your site, you can provide saved payment methods to make the checkout process even easier. You simply provide
-          the token, card type, and description that was returned from the token-only request or the token returned from the sale with card card option request.</p>
-
-        <xmp>
-        <script>
-        function ClearentOnSuccess(responseRaw,ResponseJSON){
-
-            // if you set the card-token-only option on your page you can get the token information back like this
-            if(ResponseJSON.payload && ResponseJSON.payload.tokenResponse){
-                var tokenResponse = ResponseJSON.payload.tokenResponse;
-                console.log('token-id = ' + tokenResponse['token-id']);
-                console.log('token card-type = ' + tokenResponse['card-type']);
-                console.log('token description = ' + tokenResponse['description']);
-            }
-
-            // if you set the show-save-card-option on your page AND the user chose to save their card you can get the token information back like this
-            if(ResponseJSON.links){
-                var links = ResponseJSON.links;
-                for (var i= 0;i<links.length;i++){
-                    if(links[i]['rel'] == "token"){
-                        console.log('token-id = ' + links[i]['id']);
-                    }
-                }
-            }
-
-        }
-        </script>
-        </xmp>
-
-        <p>The next time the customer logs into your site, you can provide saved payment methods using the <strong>Clearent.addToken()</strong> method to make the checkout process even easier.
-          You simply provide the token, card type, and description that was returned from the token-only request or the token returned from the sale with card card option request.</p>
-
-        <xmp>
-        <script>
-          Clearent.setProperty("pk", "307a301406072a864.....8ce3d076fde833c136b");
-          Clearent.addToken({"token":"1100005218649761111","cardType":"VISA"});
-          Clearent.addToken({"token":"1312451222335452217","cardType":"MasterCard"});
-          Clearent.addToken({"token":"1142451131215453214","description":"Vacation card"});
-          Clearent.addToken({"token":"1412451141215454218","cardType":"Visa","description":"Business travel card"});
-          Clearent.addToken({"token":"1512451151215455211"});
-          Clearent.addToken({"token":"1612451161215456216"});
-          Clearent.payButton({"amount": "64.50"});
-        </script>
-        </xmp>
-
-        <p></p>
-
-        <p>The saved cards are presented to the user in a dropdown list:</p>
-
-        <ul>
-          <li><strong>Enter Card Manually</strong> - The user can select this card option to enter the card information manually and not use a saved card.</li>
-          <li><strong>[card description]</strong> - If description is provided in addToken method (see script above) the the card description is shown in the dropdown.</li>
-          <li><strong>[card type] ending in [last for digits of card]</strong> - If no description was provided but card type is available, the card type and last four digits of card are shown in dropdown.</li>
-          <li><strong>Card ending in [last for digits of card]</strong> - If no description or card type was provided, "Card ending in" last four digits of card is shown in the dropdown.</li>
-        </ul>
-
-        <img src="images/example6.png"/>
-
-        <p></p>
-        <p>Ready to try some examples on your own? <a href="https://hpp-sb.clearent.net/" target="_blank">Visit our live demo page and try out your own examples!</a></p>
 
 
       </section>

@@ -22,470 +22,67 @@
 
         <menu>
             <a href="index.html">Overview</a>
-            <a href="security.html">Security Considerations</a>
             <a href="configuration.html">Installation / Configuration</a>
             <a href="examples.html">Examples</a>
         </menu>
 
     </header>
     <section>
-        <h3>Clearent WordPress Plugin is Highly Configurable</h3>
 
-        <p>Clearent's Hosted Payment Page was designed to provide an embedded payment solution quickly and easily. <a href="examples.html">You can get your payments working with just a few lines of code</a> and
-            you don't need to do any custom configuration.</p>
+        <h3>Requirements</h3>
 
-        <table border="1">
-            <tr>
-                <th>Shortcode attribute</th>
-                <th>Default value</th>
-                <th>Notes</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>amount</td>
-                <td>0</td>
-                <td>Value is required</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>// labels</th>
-                <th>Default value</th>
-                <th>Notes</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>title</td>
-                <td> Complete Transaction Details Below</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>button_text</td>
-                <td> Pay Now</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>card_label</td>
-                <td> Card Number</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>exp_date_label</td>
-                <td> Card Expiration Date</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>csc_label</td>
-                <td> Card Security Code</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>invoice_label</td>
-                <td> Invoice Number</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>purchase_order_label</td>
-                <td> Purchase Order</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>email_address_label</td>
-                <td> Email Address</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>customer_id_label</td>
-                <td> Customer ID</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>order_id_label</td>
-                <td> Order ID</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>description_label</td>
-                <td> Description</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>comments_label</td>
-                <td> Comments</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_address_label</td>
-                <td> Billing Address</td>
-                <td>Only applicable if billing fields are shown</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_first_name_label</td>
-                <td> First Name</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_last_name_label</td>
-                <td> Last Name</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_company_label</td>
-                <td> Company</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_street_label</td>
-                <td> Address</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_street2_label</td>
-                <td> Address Line 2</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_city_label</td>
-                <td> City</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_state_label</td>
-                <td> State</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_zip_label</td>
-                <td> Zip</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_country_label</td>
-                <td> Country</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_phone_label</td>
-                <td> Phone</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_address_label</td>
-                <td> Shipping</td>
-                <td>Only applicable if shipping fields are shown</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>billing_is_shipping_label</td>
-                <td> Same as billing address</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_first_name_label</td>
-                <td> First Name</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_last_name_label</td>
-                <td> Last Name</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_company_label</td>
-                <td> Company</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_street_label</td>
-                <td> Address</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_street2_label</td>
-                <td> Address Line 2</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_city_label</td>
-                <td> City</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_state_label</td>
-                <td> State</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_zip_label</td>
-                <td> Zip</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_country_label</td>
-                <td> Country</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_phone_label</td>
-                <td> Phone</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>// optional fields</th>
-                <th>Default value</th>
-                <th>Notes</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>invoice</td>
-                <td> false</td>
-                <td>If "true", field is shown</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>purchase_order</td>
-                <td> false</td>
-                <td>If "false", field is not shown</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>email_address</td>
-                <td> false</td>
-                <td>If any other value, field is hidden with value set</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>customer_id</td>
-                <td> false</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>order_id</td>
-                <td> false</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>description</td>
-                <td> false</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>comments</td>
-                <td> false</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>// shipping/billing</th>
-                <th>Default value</th>
-                <th>Notes</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>billing_address</td>
-                <td> false</td>
-                <td>"true" to show all billing address fields (not needed if require_billing_address=true)</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>shipping_address</td>
-                <td> false</td>
-                <td>"true" to show all shipping address fields (not needed if require_shipping_address=true)</td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>// field options</th>
-                <th>Default value</th>
-                <th>Notes</th>
-                <th></th>
-            </tr>
-            <tr>
-                <td>require_billing_address</td>
-                <td> false</td>
-                <td>"true" to show and require billing address fields</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>require_shipping_address</td>
-                <td> false</td>
-                <td>"true" to show and require shipping address fields</td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>require_csc</td>
-                <td> true</td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <th>// optional fields</th>
-                <th>Default value</th>
-                <th>billing_address=true</th>
-                <th>require_billing_address=true</th>
-            </tr>
-            <tr>
-                <td>billing-first-name</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>billing-last-name</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>billing-company</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed</td>
-            </tr>
-            <tr>
-                <td>billing-street</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>billing-street2</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed</td>
-            </tr>
-            <tr>
-                <td>billing-city</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>billing-state</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>billing-zip</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>billing-country</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>billing-phone</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <th>optional fields</th>
-                <th>Default value</th>
-                <th>shipping_address=true</th>
-                <th>require_shipping_address=true</th>
-            </tr>
-            <tr>
-                <td>shipping-first-name</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>shipping-last-name</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>shipping-company</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed</td>
-            </tr>
-            <tr>
-                <td>shipping-street</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>shipping-street2</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed</td>
-            </tr>
-            <tr>
-                <td>shipping-city</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>shipping-state</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>shipping-zip</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>shipping-country</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-            <tr>
-                <td>shipping-phone</td>
-                <td>Not displayed</td>
-                <td>Displayed</td>
-                <td>Displayed and required</td>
-            </tr>
-        </table>
+        <ul>
+            <li>Your WordPress site must use HTTPS.</li>
+            <li><strong>Do not publish your API Key or share it with anyone.</strong></li>
+            <li><strong>Never store or displayed non-encrypted card data anywhere on your site.</strong></li>
+        </ul>
+
+        <h3>Installation</h3>
+
+        <h4>Using The WordPress Dashboard</h4>
+
+        <ul>
+            <li>Navigate to "Plugins" -> Click "Add New" button</li>
+            <li>Search for 'Clearent Payments'</li>
+            <li>Click "Install Now"</li>
+            <li>Click the "Activate Plugin" link</li>
+        </ul>
+
+        <h4>Uploading via WordPress Dashboard</h4>
+
+        <ul>
+            <li>Navigate to "Plugins" -> Click "Add New" button</li>
+            <li>Click the "Upload Plugin" button</li>
+            <li>Browse to the clearent-payments.zip download location on your computer</li>
+            <li>Click "Install Now"</li>
+            <li>Click the "Activate Plugin" link</li>
+            <li><a href="http://www.clearent.com/merchants/contact-us/">Contact Clearent to request sandbox api key</a> for testing and production key for live sales.</li>
+        </ul>
+
+
+        <h3>Configuration</h3>
+
+        <h4>Settings</h4>
+
+        <h4>Transaction History</h4>
+
+        <h4>Pages Using Plugin</h4>
+
+
+        <h3>Browser Support</h3>
+
+        <p>
+            Clearent’s WordPress Plugin will work with Chrome, Firefox, Safari, and IE10 and higher. It has been designed to work on desktops, notebooks, tablets, and mobile devices.
+
+        </p>
+
+        <h3>Troubleshooting</h3>
+
+        <p>
+            Error messages for this solution are generic for security purposes as these errors are presented directly to the end user. The exchange ID of each
+            request in logged in the transaction log (see above). Provide this ID to Clearent if you need help debugging failed transaction errors.</p>
+
+        <p>Example Exchange ID from transaction log: <code>ID-CLASBDKRGW01-cgw01-41232-1446575925523-0-2261</code></p>
 
 
     </section>
