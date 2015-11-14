@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="974c4d46-e12c-42dc-80f3-67a5f2e91e45" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/configuration.html" afterPath="$PROJECT_DIR$/configuration.html" />
+    <list default="true" id="974c4d46-e12c-42dc-80f3-67a5f2e91e45" name="Default" comment="Updating documentation.">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/example02.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/example03.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/example04.png" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/images/example05.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/examples.html" afterPath="$PROJECT_DIR$/examples.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/step_by_step_install.html" afterPath="$PROJECT_DIR$/step_by_step_install.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/stylesheets/styles.css" afterPath="$PROJECT_DIR$/stylesheets/styles.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="clearent-wordpress-docs.iws" />
@@ -62,8 +62,8 @@
       <file leaf-file-name="examples.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/examples.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.7599309">
-              <caret line="430" column="0" selection-start-line="430" selection-start-column="0" selection-end-line="430" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.6831683">
+              <caret line="453" column="11" selection-start-line="453" selection-start-column="11" selection-end-line="453" selection-end-column="11" />
               <folding />
             </state>
           </provider>
@@ -523,7 +523,7 @@
       <workItem from="1447263203579" duration="599000" />
       <workItem from="1447264140095" duration="656000" />
       <workItem from="1447279753699" duration="6030000" />
-      <workItem from="1447369966017" duration="14711000" />
+      <workItem from="1447369966017" duration="18366000" />
     </task>
     <task id="LOCAL-00001" summary="Updating documentation.">
       <created>1447370712502</created>
@@ -567,11 +567,17 @@
       <option name="project" value="LOCAL" />
       <updated>1447452848911</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Updating documentation.">
+      <created>1447521170816</created>
+      <option name="number" value="00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1447521170816</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="23157000" />
+    <option name="totallyTimeSpent" value="26812000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="1592" y="-8" width="1296" height="1000" extended-state="6" />
@@ -587,9 +593,9 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32993197" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19255663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.19255663" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16935484" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2546083" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -753,8 +759,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/examples.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.7599309">
-          <caret line="430" column="0" selection-start-line="430" selection-start-column="0" selection-end-line="430" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.6831683">
+          <caret line="453" column="11" selection-start-line="453" selection-start-column="11" selection-end-line="453" selection-end-column="11" />
           <folding />
         </state>
       </provider>

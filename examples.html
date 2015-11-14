@@ -172,11 +172,6 @@
             <td>false</td>
             <td>"true" to show and require shipping address fields (Company and Address Line 2 will be optional)</td>
           </tr>
-          <tr>
-            <td>require_csc</td>
-            <td>true</td>
-            <td></td>
-          </tr>
         </table>
 
         <h4>Configuring Field Labels</h4>
@@ -396,36 +391,67 @@
 
         <p>If you don't provide an amount, the page will display the following error:</p>
 
-
-        <img src="images/placeholder.png"/>
+        <img class="framed" src="images/example02.png"/>
 
         <p></p>
 
         <h4>Additional Fields</h4>
 
+        <p>It is easy to show additional fields by simply setting the desired fields attributes to true.</p>
+
         <p>This code . . . </p>
 
-        <code>shortcode here</code>
+        <code>[clearent_pay_form amount="15.25" invoice="true" purchase_order="true"
+          email_address="true" customer_id="true" order_id="true" description="true" comments="true"]</code>
+
+        <p></p>
+        <p>Produces this form with the additional fields . . . </p>
+
+        <img class="framed" src="images/example03.png"/>
+
+        <p></p>
+
+        <h4>Configuring Billing Address and Shipping Address</h4>
+
+        <p>You can set billing_address="true" to show billing address fields or require_billing_address="true" to show
+          and require billing address fields (company and address line fields are optional if billing address is required).
+        </p>
+
+        <p>You can set shipping_address="true" to show shipping address fields or require_shipping_address="true" to show
+          and require shipping address fields (company and address line fields are optional if shipping address is required).
+        </p>
+
+        <p>If both the billing and shipping address are shown, the user is given the option to use the billing address
+          as the shipping address.</p>
+
+        <p>This code . . . </p>
+
+        <code>[clearent_pay_form amount="15.25" billing_address="true" shipping_address="true"]</code>
 
         <p></p>
         <p>Produces this form . . . </p>
 
-        <img src="images/placeholder.png"/>
+        <img class="framed" src="images/example04.png"/>
 
         <p></p>
 
-        <h4>Configuring Optional Billing Address and Shipping Address</h4>
+        <h4>Configuring Field Labels</h4>
 
-        <p>...</p>
+        <p>You can easily change the field labels to match the verbiage and requirements of your site.</p>
 
         <p>This code . . . </p>
 
-        <code>shortcode here</code>
+        <code>[clearent_pay_form amount="15.25" exp_date_label="Expiration Date"
+          csc_label="Security Code on Card" button_text="Complete Transaction"]</code>
 
         <p></p>
         <p>Produces this form . . . </p>
 
-        <img src="images/placeholder.png"/>
+        <img class="framed" src="images/example05.png"/>
+
+        <p></p>
+        <br>
+        <h3><strong>Ready to add payment to your WordPress site? We're here to help!</strong></h3>
 
         <p></p>
 
