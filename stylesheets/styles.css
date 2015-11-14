@@ -79,6 +79,7 @@ table.codes th,
 table.codes td
 {
   border: 1px solid #e5e5e5;
+  vertical-align: top;
 }
 
 table.codes ul{
