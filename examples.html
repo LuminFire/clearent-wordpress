@@ -32,7 +32,7 @@
         <p>The Clearent Payments plugin uses <a href="https://codex.wordpress.org/Shortcode">Wordpress shortcode</a> to allow you to easily add payment forms to any WordPress page.
           The shortcode for Clearent Payments plugin is clearent_pay_form and the only required attribute is the sale amount.</p>
 
-        <p>The shortcode to add the payments form to your page is <strong>clearent_pay_form</strong> and the only required attribute is <strong>amount</strong>.</p>
+        <p>The shortcode to add the payments form to your page is <strong>clearent_pay_form</strong>.</p>
 
         <p>This basic shortcode . . . </p>
 
@@ -44,7 +44,7 @@
 
         <p></p>
 
-        <h3>Shortcode Attributes</h3>
+        <h3>Amount Attributes</h3>
 
         <p>The tables below list the attributes supported by the Clearent Payments plugin.</p>
 
@@ -59,9 +59,17 @@
           </tr>
           <tr>
             <td>amount</td>
-            <td>0</td>
+            <td></td>
             <td>amount="88.50"</td>
-            <td>Value is required</td>
+            <td>If amount is not provided an amount input field is shown to the user. This is ideal for amount that the user provides such as donation. When provided, the amount value must include two decimal places.</td>
+          </tr>
+          <tr>
+            <td>sales_tax_amount</td>
+            <td></td>
+            <td>sales_tax_amount="3.22"</td>
+            <td>Providing sales tax amount may help with qualification rates (contact Clearnent support for more information). If providing sales_tax_amount, this sales_tax_amount should not be included
+              in the amount attribute. If NOT providing sales_tax_amount, the amount attribute should be the total to charge to card.
+              When provided, the sales_tax_amount value must include two decimal places.</td>
           </tr>
         </table>
 
@@ -193,6 +201,11 @@
             <td>button_text</td>
             <td>Pay Now</td>
             <td>button_text="Submit Payment"</td>
+          </tr>
+          <tr>
+            <td>amount_label</td>
+            <td>Amount</td>
+            <td>amount_label="Enter donation amount"</td>
           </tr>
           <tr>
             <td>card_label</td>
@@ -386,12 +399,9 @@
 
           <ul>
             <li>Include the clearent_pay_form shortcode.</li>
-            <li>Set the sale amount.</li>
           </ul>
 
-        <p>If you don't provide an amount, the page will display the following error:</p>
-
-        <img class="framed" src="images/example02.png"/>
+        <code>[clearent_pay_form]</code>
 
         <p></p>
 
@@ -450,6 +460,27 @@
         <img class="framed" src="images/example05.png"/>
 
         <p></p>
+
+        <h4>Invalid Shortcode Attributes</h4>
+
+        <p>Setting invalid shortcode attribute can have undesirable affects. To prevent this, if you set invalid shortcode attibutes, your page will display a warning message with any
+        invalide shortcode attributes provided.</p>
+
+        <p>This code . . . (with incorrectly spelled sales_tax_amount and card_label attributes) </p>
+
+        <code>[clearent_pay_form salse_tax_amount="2.11" cerd_label="Enter full card number"]</code>
+
+        <p></p>
+        <p>Produces this error message . . . </p>
+
+        <img class="framed" src="images/invalid_shortcode.png"/>
+
+        <p></p>
+
+        <p>So be sure to test your code! </p>
+
+        <p></p>
+
         <br>
         <h3><strong>Ready to add payment to your WordPress site? We're here to help!</strong></h3>
 
