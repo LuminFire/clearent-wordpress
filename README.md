@@ -2,14 +2,12 @@ Clearent WordPress Plugin - documentation and examples
 
 http://clearent.github.io/wordpress/
 
-
-
 === Clearent Payments ===
 Contributors: clearent1
 Tags: clearent, payments, credit card, ecommerce, e-commerce, checkout, pay buttons, hosted pay buttons, payment gateway
 Requires at least: 4.0
-Tested up to: 4.6.1
-Stable tag: 1.6
+Tested up to: 4.7.4
+Stable tag: 1.8
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -72,6 +70,13 @@ Contact Clearent at http://www.clearent.com/merchants/contact-us/ to request san
 See full documentation and usage at http://clearent.github.io/wordpress/
 
 == Changelog ==
+
+= 1.8 =
+* Additional security features added.
+
+= 1.7 =
+* Added sales_tax_amount shortcode attribute to plugin. This may help qualification rate. Contact Clearent customer support for questions or more information.
+* Updated plugin so that payments form will not be built (errors will be shown on page) if invalid shortcode attributes are set. This insures that you don't think you are setting something when in fact you are not.
 
 = 1.6 =
 * Fixed issue where amount could be interpreted wrong. Letting the server handle all validations of valid amount.
