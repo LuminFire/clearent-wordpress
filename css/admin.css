@@ -1,0 +1,106 @@
+.postbox {
+    padding: 15px 25px;
+    border-radius: 5px;
+}
+
+.warning {
+    color: coral;
+    font-weight: bold;
+}
+
+.error{
+    font-weight: bold;
+    color:#a94442;
+}
+
+.logbox {
+    min-height: 400px;
+    max-height: 400px;
+    overflow: scroll;
+}
+
+.large {
+    min-width: 450px;
+}
+
+.trans_history {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 0 1.6em;
+    table-layout: fixed;
+    min-width: 100%;
+    border: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+.trans_history th,
+.trans_history td {
+    padding: 0.4em;
+}
+
+.trans_history th {
+    text-transform: uppercase;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: rgba(51, 51, 51, 0.1);
+}
+
+.trans_history tr:hover td {
+    cursor: pointer;
+    background-color: #CAE3EA;
+}
+
+.trans_history td {
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: rgba(51, 51, 51, 0.1);
+}
+
+.trans_history td .label {
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.trans_detail {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 0 0 1.6em;
+    table-layout: fixed;
+    min-width: 100%;
+    border: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+.trans_detail th,
+.trans_detail td {
+    padding: 0.4em;
+    max-width: 500px;
+}
+
+.trans_detail th {
+    text-transform: uppercase;
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: rgba(51, 51, 51, 0.1);
+}
+
+.trans_detail tr:hover td {
+    background-color: #CAE3EA;
+}
+
+.trans_detail td {
+    border-width: 0 1px 1px 0;
+    border-style: solid;
+    border-color: rgba(51, 51, 51, 0.1);
+}
+
+.trans_detail td .label {
+    text-transform: capitalize;
+    font-style: italic;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.ui-dialog {
+    z-index: 9999 !important;
+}

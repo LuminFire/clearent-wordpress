@@ -1,0 +1,130 @@
+.hidden {
+    display: none !important;
+}
+
+.clearent-error {
+    color: #f20d0d;
+}
+
+.clearent-warning {
+    padding: 10px 10px 10px 33px;
+    margin-bottom: 15px;
+    color: #555555;
+    -webkit-border-radius: 5px 5px 5px 5px;
+    -moz-border-radius: 5px 5px 5px 5px;
+    -khtml-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    background: #FFD1D1 url('../image/clearent-warning.png') 10px 13px no-repeat;
+    border: 1px solid #F8ACAC;
+    font-size: 12px;
+}
+
+.clearent-warning .close {
+    float: right;
+    padding-top: 4px;
+    padding-right: 4px;
+    cursor: pointer;
+}
+
+.clearent-invalid-shortcode-block{
+    padding: 5px 10px 10px 10px;
+}
+
+.clearent-invalid-shortcode {
+    padding: 5px 5px 5px 25px;
+    font-family: monospace;
+    color: #cd0a0a;
+    font-size: 145%;
+
+}
+
+.clearent-card-acceptance img {
+    height: 22px;
+}
+
+.clearent_required_note {
+    font-style: italic;
+    font-size: .8em;
+    padding: 0 0 0 5px;
+}
+
+.clearent-table-heading {
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.clearent-table select {
+    padding: .5em;
+}
+
+.clearent-table select:focus {
+    outline: 0;
+    background-color: #fff;
+}
+
+.clearent-table label {
+    display: inline-block;
+    width: 100%;
+}
+
+.clearent-inline-label {
+    display: inline !important;
+}
+
+.clearent-card-acceptance {
+    text-align: center;
+    font-size: .9em;
+    font-weight: bold;
+    color: #888;
+    padding: 2px 0;
+    margin: 20px 0 5px;
+    vertical-align: top;
+
+}
+
+.clearent-address-label {
+    margin-left: 15px;
+}
+
+.clearent-security {
+    text-align: center;
+    font-size: .9em;
+    font-weight: bold;
+    color: #888;
+    padding: 2px 0;
+    margin: 5px 0 20px;
+    vertical-align: top;
+}
+
+.clearent-security a {
+    border-bottom: 0 !important;;
+}
+
+.clearent-lock {
+    background-repeat: no-repeat;
+    background-image: url('../image/clearent-lock.png');
+    display: inline-block;
+    width: 16px;
+    height: 17px;
+    vertical-align: middle;
+}
+
+.clearent-logo {
+    background-repeat: no-repeat;
+    background-image: url('../image/clearent.png');
+    background-size: 100px 20px;
+    height: 20px;
+    width: 100px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+input[type='tel'] {
+    background: #F8F8F8;
+    border: 1px solid #CCCCCC;
+    padding: 3px;
+    margin-left: 0;
+    margin-right: 0;
+}
+
+

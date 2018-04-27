@@ -1,0 +1,1 @@
+Directory required for debug logging. A file (such as this readme.txt) required for git folder versioning.
