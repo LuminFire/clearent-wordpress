@@ -8,14 +8,22 @@
  * Author: Clearent, LLC.
  * Author URI: http://clearent.github.io/wordpress/
  */
-define('WP_DEBUG', true);
+if (! defined('WP_DEBUG')) {
+	define('WP_DEBUG', true);
+	define('WP_DEBUG_DISPLAY', false);
+	define('WP_DEBUG_LOG', true);
+}
 const PLUGIN_VERSION = 1.8;
 
 class wp_clearent {
 
-    const TESTING_API_URL = "https://gateway-dev.clearent.net/rest/v2/transactions";
-    const SANDBOX_API_URL = "https://gateway-sb.clearent.net/rest/v2/transactions";
-    const PRODUCTION_API_URL = "https://gateway.clearent.net/rest/v2/transactions";
+    const TESTING_API_URL = "https://gateway-dev.clearent.net/rest/v2/";
+    const SANDBOX_API_URL = "https://gateway-sb.clearent.net/rest/v2/";
+    const PRODUCTION_API_URL = "https://gateway.clearent.net/rest/v2/";
+    const TRANSACTION_ENDPOINT = "transactions";
+    const CUSTOMER_ENDPOINT = "customers";
+    const PAYMENT_PLAN_ENDPOINT = "payment-plans";
+    const TOKEN_ENDPOINT = "tokens";
 
     protected $option_name = 'clearent_opts';
 

@@ -13,8 +13,11 @@ class payment {
         "button_text" => "Pay Now",
         "amount_label" => "Amount",
         "card_label" => "Card Number",
+        "card_type_label" => "Card Type",
         "exp_date_label" => "Card Expiration Date",
         "csc_label" => "Card Security Code",
+        "recurring_payment_label" => "Monthly Payment",
+        "recurring_payment_description" => "Make this a recurring payment.",
         "invoice_label" => "Invoice Number",
         "purchase_order_label" => "Purchase Order",
         "email_address_label" => "Email Address",
@@ -46,6 +49,7 @@ class payment {
         "shipping_country_label" => "Country",
         "shipping_phone_label" => "Phone",
         // optional fields
+        "recurring_payment" => false,
         "invoice" => false,
         "purchase_order" => false,
         "email_address" => false,
@@ -55,6 +59,16 @@ class payment {
         "comments" => false,
         // shipping/billing
         "billing_address" => false,
+        "billing_first_name" => false,
+        "billing_last_name" => false,
+        "billing_company" => false,
+        "billing_street" => false,
+        "billing_street2" => false,
+        "billing_city" => false,
+        "billing_state" => false,
+        "billing_zip" => false,
+        "billing_country" => false,
+        "billing_phone" => false,
         "shipping_address" => false,
         // field options
         "require_billing_address" => false,
@@ -82,7 +96,8 @@ class payment {
 
         // set up directories
         $plugins_url = plugins_url();
-        $get_admin_url = get_admin_url();
+	    $rest_url = rest_url();
+	    $get_admin_url = get_admin_url();
 
         $js_path = $plugins_url . "/clearent-payments/js/";
         $css_path = $plugins_url . "/clearent-payments/css/";
@@ -96,20 +111,35 @@ class payment {
 
         $form = "";
 
-        if (count($error_atts) > 0) {
-            // dump errors and do not build form
-            $form .= '<link type="text/css" rel="stylesheet" href="' . $css_path . 'clearent.css" />';
-            $form .= '<div class="clearent-warning">Webmaster: The following attributes in your Clearent plugin shortcode are invalid.
+	    $errors = false;
+
+	    if (count($error_atts) > 0) {
+		    $errors = true;
+
+		    // dump errors and do not build form
+	        $form .= '<link type="text/css" rel="stylesheet" href="' . $css_path . 'clearent.css" />';
+	        $form .= '<div class="clearent-warning">Webmaster: The following attributes in your Clearent plugin shortcode are invalid.
                         Please remove or correct these invalid entries to display the payment form:</div>
                         <div id="clearent-invalid-shortcode-block" class="clearent-invalid-shortcode-block">';
 
-            foreach ($error_atts as &$value) {
-                $form .= '<div class="clearent-invalid-shortcode">' . $value . '</div>';
+	        foreach ($error_atts as &$value) {
+	            $form .= '<div class="clearent-invalid-shortcode">' . $value . '</div>';
             }
+        }
 
-            $form .= '</div><div id="errors_message_bottom" class="clearent-warning"><span>Please correct errors noted above.</span></div>';
 
-            return $form;
+        if ((isset($atts['recurring_payment']) && $atts['recurring_payment'] == 'true') && (empty($atts['require_billing_address']) || $atts['require_billing_address'] == 'false')) {
+        	if (!$errors) {
+        		$errors = true;
+		        $form .= '<link type="text/css" rel="stylesheet" href="' . $css_path . 'clearent.css" />';
+	        }
+
+	        $form .= '<div class="clearent-warning">Webmaster: To enable recurring payments the require billing address attribute must be set to true.</div>';
+        }
+
+        if ($errors) {
+	        $form .= '</div><div id="errors_message_bottom" class="clearent-warning"><span>Please correct errors noted above.</span></div>';
+	        return $form;
         }
 
         // get shortcode options
@@ -143,225 +173,86 @@ class payment {
         $trans_url = $get_admin_url . "admin-post.php";
         $form .= '<script type="text/javascript" src="' . $js_path . 'clearent.js" ></script>';
         $form .= '<script type="text/javascript" src="' . $js_path . 'loading.js" ></script>';
-        $form .= '<script src="https://www.google.com/recaptcha/api.js" async defer></script>';
         $form .= '<link type="text/css" rel="stylesheet" href="' . $css_path . 'clearent.css" />';
         $form .= '<link type="text/css" rel="stylesheet" href="' . $css_path . 'loading.css" />';
         $form .= '<script type="text/javascript">
+                    var  rest_url =  "' . $rest_url . '";
                     var  trans_url =  "' . $trans_url . '";
-                    function onSubmit(token) {
-                        Clearent.pay();
-                    }
+                    var  admin_url =  "' . $get_admin_url . '";
                   </script>
                   <div class="wp_clearent_button">
                     <h3>' . $a['title'] . '</h3>
                     <div id="errors" class="hidden clearent-warning"><span id="errors_message"></span></div>
                     <form action="' . $get_admin_url . 'admin-post.php" method="POST" class="clearent-payment-form" autocomplete="off">
-                      <div class="clearent-card-acceptance">
-                          <img class="acceptedCards" src="' . $image_path . 'clearent-cards.png">
-                      </div>
                       <span class="clearent_required_note">* indicates required field</span>
                       <input style="display: none;" type="text" autocomplete="foo" />
                       <table class="clearent-table">
                         <tbody>';
-        /* if developer set amount to input then show amount field  */
-        if (floatval($a['amount']) <= 0) {
-            $form .= '<tr>
-                            <td><label for="amount">* ' . $a['amount-label'] . '</label></td>
-                            <td>
-                              <input type="text" id="amount" name="amount" value="" />
-                            </td>
-                          </tr>';
-        }
-        $form .= '<tr>
-                            <td>
-                              <label for="card">* ' . $a['card-label'] . '</label>
-                            </td>
-                            <td>
-                              <input type="text" id="card" name="card" value="" maxlength="27" />
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label for="expire-date-month">* ' . $a['exp-date-label'] . '</label>
-                            </td>
-                            <td>
-                              <select name="expire-date-month" id="expire-date-month" class="clearent-select-field">
-                                <option value="01">January</option>
-                                <option value="02">February</option>
-                                <option value="03">March</option>
-                                <option value="04">April</option>
-                                <option value="05">May</option>
-                                <option value="06">June</option>
-                                <option value="07">July</option>
-                                <option value="08">August</option>
-                                <option value="09">September</option>
-                                <option value="10">October</option>
-                                <option value="11">November</option>
-                                <option value="12">December</option>
-                              </select>
-                              /
-                              <select name="expire-date-year" id="expire-date-year" class="clearent-select-field">
-                              ' . $year_options . '
-                              </select>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              <label for="csc">' . ((is_bool($a['require-csc']) && $a['require-csc'] != false) ? '* ' : '&nbsp;&nbsp; ') . $a['csc-label'] . '</label>
-                            </td>
-                            <td>
-                              <input type="text" id="csc" name="csc" value="" />
-                            </td>
-                          </tr>';
-
-        /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
-        if (is_bool($a['invoice']) && $a['invoice'] != false) {
-            $form .= '<tr>
-                        <td><label for="invoice">' . $a['invoice-label'] . '</label></td>
-                        <td>
-                          <input type="text" id="invoice" name="invoice" value="" />
-                        </td>
-                      </tr>';
-        } else if (!is_bool($a['invoice']) && isset($a['invoice'])) {
-            $form .= '<input type="hidden" id="invoice" name="invoice" value="' . ($a['invoice']) . '" />';
-        }
-
-        /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
-        if (is_bool($a['purchase-order']) && $a['purchase-order'] != false) {
-            $form .= '<tr>
-                        <td><label for="purchase-order">' . $a['purchase-order-label'] . '</label></td>
-                        <td>
-                          <input type="text" id="purchase-order" name="purchase-order" value="" />
-                        </td>
-                      </tr>';
-        } else if (!is_bool($a['purchase-order']) && isset($a['purchase-order'])) {
-            $form .= '<input type="hidden" id="purchase-order" name="purchase-order" value="' . ($a['purchase-order'] == 'true' ? "" : $a['purchase-order']) . '" />';
-        }
-
-        /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
-        if (is_bool($a['email-address']) && $a['email-address'] != false) {
-            $form .= '<tr>
-                        <td><label for="email-address">' . $a['email-address-label'] . '</label></td>
-                        <td>
-                          <input type="text" id="email-address" name="email-address" value="" />
-                        </td>
-                      </tr>';
-        } else if (!is_bool($a['email-address']) && isset($a['email-address'])) {
-            $form .= '<input type="hidden" id="email-address" name="email-address" value="' . ($a['email-address'] == 'true' ? "" : $a['email-address']) . '" />';
-        }
-
-        /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
-        if (is_bool($a['customer-id']) && $a['customer-id'] != false) {
-            $form .= '<tr>
-                        <td><label for="customer-id">' . $a['customer-id-label'] . '</label></td>
-                        <td>
-                          <input type="text" id="customer-id" name="customer-id" value="" />
-                        </td>
-                      </tr>';
-        } else if (!is_bool($a['customer-id']) && isset($a['customer-id'])) {
-            $form .= '<input type="hidden" id="customer-id" name="customer-id" value="' . ($a['customer-id'] == 'true' ? "" : $a['customer-id']) . '" />';
-        }
-
-        /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
-        if (is_bool($a['order-id']) && $a['order-id'] != false) {
-            $form .= '<tr>
-                        <td><label for="order-id">' . $a['order-id-label'] . '</label></td>
-                        <td>
-                          <input type="text" id="order-id" name="order-id" value="" />
-                        </td>
-                      </tr>';
-        } else if (!is_bool($a['order-id']) && isset($a['order-id'])) {
-            $form .= '<input type="hidden" id="order-id" name="order-id" value="' . ($a['order-id'] == 'true' ? "" : $a['order-id']) . '" />';
-        }
-
-        /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
-        if (is_bool($a['description']) && $a['description'] != false) {
-            $form .= '<tr>
-                        <td><label for="description">' . $a['description-label'] . '</label></td>
-                        <td>
-                          <input type="text" id="description" name="description" value="" />
-                        </td>
-                      </tr>';
-        } else if (!is_bool($a['description']) && isset($a['description'])) {
-            $form .= '<input type="hidden" id="description" name="description" value="' . ($a['description'] == 'true' ? "" : $a['description']) . '" />';
-        }
-
-        /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
-        if (is_bool($a['comments']) && $a['comments'] != false) {
-            $form .= '<tr>
-                        <td><label for="comments">' . $a['comments-label'] . '</label></td>
-                        <td>
-                          <input type="text" id="comments" name="comments" value="" />
-                        </td>
-                      </tr>';
-        } else if (!is_bool($a['comments']) && isset($a['comments'])) {
-            $form .= '<input type="hidden" id="comments" name="comments" value="' . ($a['comments'] == 'true' ? "" : $a['comments']) . '" />';
-        }
 
         if ((is_bool($a['billing-address']) && $a['billing-address'] != false) || (is_bool($a['require-billing-address']) && $a['require-billing-address'] != false)) {
             $form .= '
-                          <tr>
+                          <tr class="clearent-address-row clearent-billing clearent-table-heading-row">
                             <td class="clearent-table-heading">' . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . $a['billing-address-label'] . '</td>
                             <td></td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-first-name">' . $a['billing-first-name-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-first-name">' . $a['billing-first-name-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" id="billing-first-name" name="billing-first-name" value="" />
+                              <input type="text" id="billing-first-name" name="billing-first-name" value="' . $a['billing-first-name'] . '" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-last-name">' . $a['billing-last-name-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-last-name">' . $a['billing-last-name-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" id="billing-last-name" name="billing-last-name" value="" />
+                              <input type="text" id="billing-last-name" name="billing-last-name" value="' . $a['billing-last-name'] . '" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-company">' . $a['billing-company-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-company">' . $a['billing-company-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" id="billing-company" name="billing-company" value="" />
+                              <input type="text" id="billing-company" name="billing-company" value="' . $a['billing-company'] . '" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-street">' . $a['billing-street-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-street">' . $a['billing-street-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" id="billing-street" name="billing-street" value="" />
+                              <input type="text" id="billing-street" name="billing-street" value="' . $a['billing-street'] . '" />
                             </td>
                           </tr>
-                          <tr>
+                          <tr class="clearent-address-row clearent-billing">
                             <td><label class="clearent-address-label" for="billing-street2">' . $a['billing-street2-label'] . '</label></td>
                             <td>
-                              <input type="text" id="billing-street2" name="billing-street2" value="" />
+                              <input type="text" id="billing-street2" name="billing-street2" value="' . $a['billing-street2'] . '" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-city">' . $a['billing-city-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-city">' . $a['billing-city-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" name="billing-city" id="billing-city" value="" />
+                              <input type="text" name="billing-city" id="billing-city" value="' . $a['billing-city'] . '" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-state">' . $a['billing-state-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-state">' . $a['billing-state-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input autocomplete="off" type="text" name="billing-state" id="billing-state" />
+                              <input autocomplete="off" type="text" name="billing-state" id="billing-state" class="billing-state" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-zip">' . $a['billing-zip-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-zip">' . $a['billing-zip-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" name="billing-zip" id="billing-zip" value="" />
+                              <input type="text" name="billing-zip" id="billing-zip" value="' . $a['billing-zip'] . '" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-country">' . $a['billing-country-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-country">' . $a['billing-country-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" name="billing-country" id="billing-country" value="" />
+                              <input type="text" name="billing-country" id="billing-country" class="billing-country" value="' . $a['billing-country'] . '" />
                             </td>
                           </tr>
-                          <tr>
-                            <td><label class="clearent-address-label" for="billing-phone">' . $a['billing-phone-label'] . '</label></td>
+                          <tr class="clearent-address-row clearent-billing">
+                            <td><label class="clearent-address-label" for="billing-phone">' . $a['billing-phone-label'] . ((is_bool($a['require-billing-address']) && $a['require-billing-address'] != false) ? '* ' : '') . '</label></td>
                             <td>
-                              <input type="text" name="billing-phone" id="billing-phone" value="" />
+                              <input type="text" name="billing-phone" id="billing-phone" value="' . $a['billing-phone'] . '" />
                             </td>
                           </tr>
                           ';
@@ -416,7 +307,7 @@ class payment {
                           <tr>
                             <td><label class="clearent-address-label" for="shipping-state">' . $a['shipping-state-label'] . '</label></td>
                             <td>
-                              <input type="text" name="shipping-state" id="shipping-state" />
+                              <input type="text" name="shipping-state" id="shipping-state" class="shipping-state" />
                             </td>
                           </tr>
                           <tr>
@@ -428,7 +319,7 @@ class payment {
                           <tr>
                             <td><label class="clearent-address-label" for="shipping-country">' . $a['shipping-country-label'] . '</label></td>
                             <td>
-                              <input type="text" name="shipping-country" id="shipping-country" value="" />
+                              <input type="text" name="shipping-country" id="shipping-country" class="shipping-country" value="" />
                             </td>
                           </tr>
                           <tr>
@@ -440,27 +331,184 @@ class payment {
                           ';
         }
 
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['customer-id']) && $a['customer-id'] != false) {
+		    $form .= '<tr>
+                        <td><label for="customer-id">' . $a['customer-id-label'] . '</label></td>
+                        <td>
+                          <input type="text" id="customer-id" name="customer-id" value="" />
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['customer-id']) && isset($a['customer-id'])) {
+		    $form .= '<input type="hidden" id="customer-id" name="customer-id" value="' . ($a['customer-id'] == 'true' ? "" : $a['customer-id']) . '" />';
+	    }
+
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['invoice']) && $a['invoice'] != false) {
+		    $form .= '<tr>
+                        <td><label for="invoice">' . $a['invoice-label'] . '</label></td>
+                        <td>
+                          <input type="text" id="invoice" name="invoice" value="" />
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['invoice']) && isset($a['invoice'])) {
+		    $form .= '<input type="hidden" id="invoice" name="invoice" value="' . ($a['invoice']) . '" />';
+	    }
+
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['purchase-order']) && $a['purchase-order'] != false) {
+		    $form .= '<tr>
+                        <td><label for="purchase-order">' . $a['purchase-order-label'] . '</label></td>
+                        <td>
+                          <input type="text" id="purchase-order" name="purchase-order" value="" />
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['purchase-order']) && isset($a['purchase-order'])) {
+		    $form .= '<input type="hidden" id="purchase-order" name="purchase-order" value="' . ($a['purchase-order'] == 'true' ? "" : $a['purchase-order']) . '" />';
+	    }
+
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['email-address']) && $a['email-address'] != false) {
+		    $form .= '<tr>
+                        <td><label for="email-address">' . $a['email-address-label'] . '*</label></td>
+                        <td>
+                          <input type="text" id="email-address" name="email-address" value="" />
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['email-address']) && isset($a['email-address'])) {
+		    $form .= '<input type="hidden" id="email-address" name="email-address" value="' . ($a['email-address'] == 'true' ? "" : $a['email-address']) . '" />';
+	    }
+
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['order-id']) && $a['order-id'] != false) {
+		    $form .= '<tr>
+                        <td><label for="order-id">' . $a['order-id-label'] . '</label></td>
+                        <td>
+                          <input type="text" id="order-id" name="order-id" value="" />
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['order-id']) && isset($a['order-id'])) {
+		    $form .= '<input type="hidden" id="order-id" name="order-id" value="' . ($a['order-id'] == 'true' ? "" : $a['order-id']) . '" />';
+	    }
+
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['description']) && $a['description'] != false) {
+		    $form .= '<tr>
+                        <td><label for="description">' . $a['description-label'] . '</label></td>
+                        <td>
+                          <input type="text" id="description" name="description" value="" />
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['description']) && isset($a['description'])) {
+		    $form .= '<input type="hidden" id="description" name="description" value="' . ($a['description'] == 'true' ? "" : $a['description']) . '" />';
+	    }
+
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['comments']) && $a['comments'] != false) {
+		    $form .= '<tr>
+                        <td><label for="comments">' . $a['comments-label'] . '</label></td>
+                        <td>
+                          <input type="text" id="comments" name="comments" value="" />
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['comments']) && isset($a['comments'])) {
+		    $form .= '<input type="hidden" id="comments" name="comments" value="' . ($a['comments'] == 'true' ? "" : $a['comments']) . '" />';
+	    }
+
+	    $form .= '<tr>
+                    <td>
+                      <label for="card">' . $a['card-label'] . '*</label>
+                    </td>
+                    <td>
+                      <input type="text" id="card" class="clearent-card" name="card" value="" maxlength="27" />
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="expire-date-month">' . $a['exp-date-label'] . '*</label>
+                    </td>
+                    <td>
+                      <select name="expire-date-month" id="expire-date-month" class="clearent-select-field expire-date-month">
+                        <option value="01">January</option>
+                        <option value="02">February</option>
+                        <option value="03">March</option>
+                        <option value="04">April</option>
+                        <option value="05">May</option>
+                        <option value="06">June</option>
+                        <option value="07">July</option>
+                        <option value="08">August</option>
+                        <option value="09">September</option>
+                        <option value="10">October</option>
+                        <option value="11">November</option>
+                        <option value="12">December</option>
+                      </select>
+                      /
+                      <select name="expire-date-year" id="expire-date-year" class="clearent-select-field expire-date-year">
+                      ' . $year_options . '
+                      </select>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="csc">'. $a['csc-label'] . ((is_bool($a['require-csc']) && $a['require-csc'] != false) ? '* ' : '&nbsp;&nbsp; ') . '</label>
+                    </td>
+                    <td>
+                      <input type="text" id="csc" class="clearent-csc" name="csc" value="" />
+                    </td>
+                  </tr>';
+	    /* if developer set amount to input then show amount field  */
+	    if (floatval($a['amount']) <= 0) {
+		    $form .= '<tr class="clearent-amount-row">
+	                    <td><label for="amount">' . $a['amount-label'] . '*</label></td>
+	                    <td>
+	                      $<input type="text" id="amount" name="amount" value="' . $a['amount'] . '" />
+	                    </td>
+	                  </tr>';
+	    } else {
+		    $form .= '<tr class="clearent-amount-row">
+	                    <td><label for="amount">' . $a['amount-label'] . '*</label></td>
+	                    <td>
+	                      $<input type="text" id="amount" name="amount" value="' . $a['amount'] . '" readonly />
+	                    </td>
+	                  </tr>';
+	    }
+
+	    /* optional field - show if set to true in shortcode - hidden if value set in short code - not present if set to false in shortcode or not set  */
+	    if (is_bool($a['recurring-payment']) && $a['recurring-payment'] != false) {
+		    $form .= '<tr>
+                        <td><label for="recurring-payment">' . $a['recurring-payment-label'] . '</label></td>
+                        <td>
+                          <input type="checkbox" id="recurring-payment" name="recurring-payment" value="" />' . $a['recurring-payment-description'] . '
+                        </td>
+                      </tr>';
+	    } else if (!is_bool($a['recurring-payment']) && isset($a['recurring-payment'])) {
+		    $form .= '<input type="hidden" id="recurring-payment" name="recurring-payment" value="' . ($a['recurring-payment'] == 'true' ? "" : $a['recurring-payment']) . '" />';
+	    }
+
         $form .= '<tr>
                     <td></td>
                     <td>
                         <button
                             id="wp_clearent_submit"
                             name="wp_clearent_submit"
-                            class="submit_wp_clearent g-recaptcha"
-                            data-sitekey="' . $this->getCaptchaPublicKey() . '"
-                            data-callback="onSubmit">
+                            class="submit_wp_clearent">
                             ' . $a['button-text'] . '
                         </button>
                     </td>
                   </tr>
                 </tbody>
               </table>
+              <div class="clearent-card-acceptance">
+	              <img class="acceptedCards" src="' . $image_path . 'clearent-cards.png">
+	          </div>
               <div id="errors_message_bottom" class="hidden clearent-warning"><span>Please correct errors noted above.</span></div>
               <div class="clearent-security">
                 <div class="clearent-lock" aria-hidden="true"></div>Secured by <a title="http://www.clearent.com/" href="http://www.clearent.com/" target="_blank"><div class="clearent-logo logo"></div></a>
               </div>
             </form>
           </div>';
+
+	    $form .= '';
 
         return $form;
     }
@@ -700,6 +748,13 @@ class payment {
             }
         }
 
+	    if (!$_REQUEST["email-address"]) {
+		    $message = "Email is required.";
+		    $this->clearent_util->logger($message);
+		    $response["error"] = $response["error"] . $message . "<br>";
+		    $has_errors = true;
+	    }
+
         if ($has_errors) {
             $this->clearent_util->logger("response=" . json_encode($response));
             echo json_encode($response);
@@ -754,16 +809,18 @@ class payment {
         $payment_data["card"] = preg_replace("/[^0-9]/", "", $_REQUEST["card"]);
         $payment_data["exp-date"] = $_REQUEST["expire-date-month"] . $_REQUEST["expire-date-year"];
         $payment_data["csc"] = $_REQUEST["csc"];
+        $payment_data["card-type"] = $_REQUEST["card-type"];
 
         // transaction metadata
-        $payment_data["invoice"] = $_REQUEST["invoice"];
-        $payment_data["purchase-order"] = $_REQUEST["purchase-order"];
-        $payment_data["email-address"] = $_REQUEST["email-address"];
-        $payment_data["customer-id"] = $_REQUEST["customer-id"];
-        $payment_data["order-id"] = $_REQUEST["order-id"];
-        $payment_data["client-ip"] = $this->getRealIpAddr();
-        $payment_data["description"] = $_REQUEST["description"];
-        $payment_data["comments"] = $_REQUEST["comments"];
+	    $payment_data["recurring-payment"] = $_REQUEST["recurring-payment"];
+	    $payment_data["invoice"] = $_REQUEST["invoice"];
+	    $payment_data["purchase-order"] = $_REQUEST["purchase-order"];
+	    $payment_data["email-address"] = $_REQUEST["email-address"];
+	    $payment_data["customer-id"] = $_REQUEST["customer-id"];
+	    $payment_data["order-id"] = $_REQUEST["order-id"];
+	    $payment_data["client-ip"] = $this->getRealIpAddr();
+	    $payment_data["description"] = $_REQUEST["description"];
+	    $payment_data["comments"] = $_REQUEST["comments"] . '|' . $_REQUEST['billing-first-name'] . ' ' . $_REQUEST['billing-last-name']. '|' . $_REQUEST["email-address"];
 
         $billing = array(
             "first-name" => $_REQUEST["billing-first-name"],
@@ -808,8 +865,6 @@ class payment {
         $responseDataAsJSON = json_decode($db_response_data);
 
         $this->clearent_util->logger($db_response_data);
-
-        $response = array();
 
         // 1 - Put together a debug log message that is logged when debug logging is turned on
         if (isset($responseDataAsJSON->payload->transaction) && isset($responseDataAsJSON->payload->transaction->{"display-message"})) {
@@ -878,6 +933,7 @@ class payment {
             "amount" => $db_amount,
             "sales_tax_amount" => $db_sales_tax_amount,
             "card" => $db_card,
+            "recurring_payment" => $_REQUEST["recurring-payment"] ? true : false,
             "invoice" => $responseDataAsJSON->payload->transaction->{"invoice"},
             "purchase_order" => $responseDataAsJSON->payload->transaction->{"purchase-order"},
             "email_address" => $responseDataAsJSON->payload->transaction->{"email-address"},
@@ -921,13 +977,16 @@ class payment {
 
         $this->clearent_util->add_record($table_name, $values);
 
+        $response = array("id" => $db_id);
+
+	    global $pagenow;
         if ($responseDataAsJSON->{"code"} == "200") {
             // 3a - add success redirect url to response
-            $success_url = $options["success_url"];
+            $success_url = apply_filters('clearent_success_url', $options["success_url"]);
             if ($success_url == "-1") {
                 $response["redirect"] = get_home_url();
             } else {
-                $response["redirect"] = get_permalink($success_url);
+	            $response["redirect"] = get_permalink($success_url);
             }
         } else {
             // 3b - add error to response

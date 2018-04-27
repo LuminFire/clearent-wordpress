@@ -16,7 +16,7 @@ class clearent_util {
         // set up year dropdown for expiration month
         $year_options = '';
         $today = getdate();
-        for ($i = $today['year']; $i < $today['year'] + 11; $i++) {
+        for ($i = $today["year"]; $i < $today["year"] + 11; $i++) {
             $year_options .= '<option value="' . strftime('%y', mktime(0, 0, 0, 1, 1, $i)) . '">' . strftime('%Y', mktime(0, 0, 0, 1, 1, $i)) . '</option>';
         }
         return $year_options;
@@ -91,40 +91,181 @@ class clearent_util {
     }
 
     public function sendCurl($url, $payment_data) {
-        $curl = curl_init($url);
+    	$is_recurring = $payment_data["recurring-payment"];
+	    unset($payment_data["recurring-payment"]);
 
-        $headers = array(
-            "Accept: " . "application/json",
-            "Content-Type: " . "application/json",
-            "Cache-Control: no-cache"
-        );
+	    $payment_url = $url . wp_clearent::TRANSACTION_ENDPOINT;
+	    $curl = curl_init($payment_url);
 
-        //curl_setopt($curl, CURLOPT_PORT, 443);
-        curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
-        curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
-        //curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, FALSE);
-        curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
-        curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
-        curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
-        curl_setopt($curl, CURLOPT_POST, 1);
-        curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payment_data));
+	    $headers = array(
+		    "Accept: " . "application/json",
+		    "Content-Type: " . "application/json",
+		    "Cache-Control: no-cache"
+	    );
 
-        $this->logger("CURL sent to: " . $url);
+	    //curl_setopt($curl, CURLOPT_PORT, 443);
+	    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+	    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+	    //curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+	    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+	    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+	    curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
+	    curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
+	    curl_setopt($curl, CURLOPT_POST, 1);
+	    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payment_data));
 
-        $response = curl_exec($curl);
-        curl_close($curl);
+	    $this->logger("CURL sent to: " . $url);
 
-        $this->logger("--------------------- begin curl response ---------------------");
-        $this->logger($response);
-        $this->logger("--------------------- end curl response ---------------------");
+	    $payment_response = curl_exec($curl);
+	    curl_close($curl);
 
-        return $response;
+	    $this->logger("--------------------- begin curl response ---------------------");
+	    $this->logger($payment_response);
+	    $this->logger("--------------------- end curl response ---------------------");
+
+	    $payment_response_array = json_decode($payment_response, true);
+
+    	if ( 'true' === $is_recurring && $payment_response_array["code"] == "200") {
+		    $customer_url = $url . wp_clearent::CUSTOMER_ENDPOINT;
+
+		    $curl = curl_init($customer_url);
+
+		    $headers = array(
+		    	"api-key: " . $payment_data["api-key"],
+			    "Accept: " . "application/json",
+			    "Content-Type: " . "application/json",
+			    "Cache-Control: no-cache"
+		    );
+
+		    $customer_payload = array(
+		    	"billing-address" => $payment_data["billing"],
+				"email" => $payment_data["email-address"],
+				"first-name" => $payment_data["billing"]["first-name"],
+				"last-name" => $payment_data["billing"]["last-name"],
+				"phone" => $payment_data["billing"]["phone"],
+			    "shipping-address" => $payment_data["shipping"]
+		    );
+
+		    //curl_setopt($curl, CURLOPT_PORT, 443);
+		    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+		    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+		    //curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+		    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+		    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+		    curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
+		    curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
+		    curl_setopt($curl, CURLOPT_POST, 1);
+		    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($customer_payload));
+
+		    $customer_response = curl_exec($curl);
+		    curl_close($curl);
+
+		    $this->logger("--------------------- begin curl response ---------------------");
+		    $this->logger($customer_response);
+		    $this->logger("--------------------- end curl response ---------------------");
+
+		    $customer_response_array = json_decode($customer_response, true);
+
+		    if ($customer_response_array["code"] == "201" && !empty($customer_response_array["payload"]["customer"]["customer-key"])) {
+			    $token_url = $url . wp_clearent::TOKEN_ENDPOINT;
+
+			    $curl = curl_init($token_url);
+
+			    $headers = array(
+				    "api-key: " . $payment_data["api-key"],
+				    "Accept: " . "application/json",
+				    "Content-Type: " . "application/json",
+				    "Cache-Control: no-cache"
+			    );
+
+			    $token_payload = array(
+				    "card" => $payment_data["card"],
+				    "card-type" => $payment_data["card-type"],
+				    "csc" => $payment_data["csc"],
+				    "customer-key" => $customer_response_array["payload"]["customer"]["customer-key"],
+				    "exp-date" => $payment_data["exp-date"],
+				    "last-four-digits" => substr($payment_data["card"], -4),
+			    );
+
+			    //curl_setopt($curl, CURLOPT_PORT, 443);
+			    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+			    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+			    //curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+			    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+			    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+			    curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
+			    curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
+			    curl_setopt($curl, CURLOPT_POST, 1);
+			    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($token_payload));
+
+			    $token_response = curl_exec($curl);
+			    curl_close($curl);
+
+			    $this->logger("--------------------- begin curl response ---------------------");
+			    $this->logger($token_response);
+			    $this->logger("--------------------- end curl response ---------------------");
+
+			    $token_response_array = json_decode($token_response, true);
+
+			    if ($token_response_array["code"] == "200" && !empty($token_response_array["payload"]["tokenResponse"]["token-id"])) {
+				    $payment_plan_url = $url . wp_clearent::PAYMENT_PLAN_ENDPOINT;
+
+				    $curl = curl_init($payment_plan_url);
+
+				    $headers = array(
+					    "api-key: " . $payment_data["api-key"],
+					    "Accept: " . "application/json",
+					    "Content-Type: " . "application/json",
+					    "Cache-Control: no-cache"
+				    );
+
+				    $date = new DateTime();
+				    $date->modify('+1 month');
+				    $start_date = $date->format("Y-m-d");
+				    $date->modify('+118 month');
+				    $end_date = $date->format("Y-m-d");
+
+
+				    $payment_plan_payload = array(
+					    "customer-key" => $customer_response_array["payload"]["customer"]["customer-key"],
+					    "customer-name" => $payment_data["billing"]["first-name"] . $payment_data["billing"]["last-name"],
+					    "frequency" => "MONTHLY",
+					    "frequency-month" => "1",
+					    "frequency-day" => $date->format("j"),
+					    "payment-amount" => $payment_data["amount"],
+					    "start-date" => $start_date,
+					    "end-date" => $end_date,
+					    "status" => "Active",
+					    "token-id" => $token_response_array["payload"]["tokenResponse"]["token-id"],
+				    );
+
+				    //curl_setopt($curl, CURLOPT_PORT, 443);
+				    curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
+				    curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, 0);
+				    //curl_setopt( $curl, CURLOPT_SSL_VERIFYPEER, FALSE);
+				    curl_setopt($curl, CURLOPT_RETURNTRANSFER, 1);
+				    curl_setopt($curl, CURLOPT_FOLLOWLOCATION, false);
+				    curl_setopt($curl, CURLOPT_FORBID_REUSE, 1);
+				    curl_setopt($curl, CURLOPT_FRESH_CONNECT, 1);
+				    curl_setopt($curl, CURLOPT_POST, 1);
+				    curl_setopt($curl, CURLOPT_POSTFIELDS, json_encode($payment_plan_payload));
+
+				    $plan_response = curl_exec($curl);
+				    curl_close($curl);
+
+				    $this->logger("--------------------- begin curl response ---------------------");
+				    $this->logger($plan_response);
+				    $this->logger("--------------------- end curl response ---------------------");
+			    }
+		    }
+	    }
+
+        return $payment_response;
     }
 
     public function logger($message, $prefix = '') {
         // recursively walks message if array is passed in
-        $debug = get_option($this->option_name)['enable_debug'] == 'enabled';
+        $debug = get_option($this->option_name)["enable_debug"] == 'enabled';
         if ($debug) {
             if (is_array($message)) {
                 foreach ($message as $key => $value) {

@@ -40,7 +40,7 @@ Clearent = {
         /*
          Luhn algorithm to validate credit card by check digit
          From the rightmost digit, which is the check digit, moving left, double the value of every second digit;
-         if the product of this doubling operation is greater than 9 (e.g., 8 × 2 = 16), then
+         if the product of this doubling operation is greater than 9 (e.g., 8 ï¿½ 2 = 16), then
          sum the digits of the product (e.g., 16: 1 + 6 = 7, 18: 1 + 8 = 9).
          or simply subtract 9 from the product (e.g., 16: 16 - 9 = 7, 18: 18 - 9 = 9).
          Take the sum of all the digits.
@@ -187,8 +187,9 @@ Clearent = {
 
             var txnDetails = {
                 "action": "transaction",
-                "amount": $("#amount").val(),
+                "amount": isNaN(parseInt($("#amount").val()).toFixed(2)) ? $("#amount").val() : parseInt($("#amount").val()).toFixed(2),
                 "card": $("#card").val(),
+                "card-type": Clearent.cardType,
                 "g-recaptcha-response": $("#g-recaptcha-response").val(),
                 "expire-date-month": $("#expire-date-month").val(),
                 "expire-date-year": $("#expire-date-year").val(),
@@ -196,6 +197,7 @@ Clearent = {
                 //"isShippingSameAsBilling": $("#shipping").prop("checked"),
                 "email": $("#email").val(),
                 // transaction metadata
+                "recurring-payment": $("#recurring-payment").prop('checked'),
                 "invoice": $("#invoice").val(),
                 "purchase-order": $("#purchase-order").val(),
                 "email-address": $("#email-address").val(),
@@ -250,11 +252,24 @@ Clearent = {
                         $("#errors").removeClass("hidden");
                         $("#errors_message").html(response["error"]);
                         $('#errors_message_bottom').removeClass("hidden");
-                        grecaptcha.reset();
                     }
 
                     if (response && response["redirect"]) {
-                        window.location = response["redirect"];
+                        var options = {
+                            async: true,
+                            data: JSON.stringify(response),
+                            contentType : 'application/json',
+                            url: rest_url + 'mlba/v1/purchase/'
+                        };
+                        $.post(options)
+
+                        if (window.location.href.indexOf("wp-admin") > -1) {
+                          window.location.reload()
+                          window.location = admin_url;
+                        } else {
+                          window.location.reload()
+                          window.location = response["redirect"];
+                        }
                     }
                 }
             });
@@ -278,7 +293,7 @@ function handler() {
     (function ($) {
         // wrapping this because WordPress uses jQuery in compatibility mode
 
-        $("#card")
+        $(".clearent-card")
             .on("input", function (event) {
                 Clearent.formatField(event, "card");
                 Clearent.getCardTypeFromEvent(event);
@@ -290,7 +305,7 @@ function handler() {
                 Clearent.setType(event, "password");
             });
 
-        $("#csc")
+        $(".clearent-csc")
             .on("focus", function (event) {
                 Clearent.setType(event, "text");
             })
@@ -352,10 +367,10 @@ function handler() {
                 "Wisconsin",
                 "Wyoming"
             ];
-            $("#billing-state").autocomplete({
+            $(".billing-state").autocomplete({
                 source: availableStates
             });
-            $("#shipping-state").autocomplete({
+            $(".shipping-state").autocomplete({
                 source: availableStates
             });
 
@@ -558,10 +573,10 @@ function handler() {
                 "Zimbabwe"
             ];
 
-            $("#billing-country").autocomplete({
+            $(".billing-country").autocomplete({
                 source: availableCountries
             });
-            $("#shipping-country").autocomplete({
+            $(".shipping-country").autocomplete({
                 source: availableCountries
             });
 
