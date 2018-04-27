@@ -3,7 +3,7 @@ Contributors: clearent1
 Tags: clearent, payments, credit card, ecommerce, e-commerce, checkout, pay buttons, hosted pay buttons, payment gateway
 Requires at least: 4.0
 Tested up to: 4.7.4
-Stable tag: 1.8
+Stable tag: 1.8.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -66,6 +66,12 @@ Contact Clearent at http://www.clearent.com/merchants/contact-us/ to request san
 See full documentation and usage at http://clearent.github.io/wordpress/
 
 == Changelog ==
+
+= 1.8.2 =
+* Fix recaptcha support
+
+= 1.8.1 =
+* Add limited support for recurring payments.
 
 = 1.8 =
 * Additional security features added.

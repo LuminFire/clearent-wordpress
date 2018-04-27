@@ -252,6 +252,7 @@ Clearent = {
                         $("#errors").removeClass("hidden");
                         $("#errors_message").html(response["error"]);
                         $('#errors_message_bottom').removeClass("hidden");
+                        grecaptcha.reset();
                     }
 
                     if (response && response["redirect"]) {

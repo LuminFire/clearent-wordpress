@@ -4,7 +4,7 @@
  * Plugin Name: Clearent Payments
  * Plugin URI: https://wordpress.org/plugins/clearent-payments/
  * Description: Quickly and easily add secure, PCI Compliant, payment to your WordPress site. This plugin is maintained directly by Clearent, a leader in payments.
- * Version: 1.8
+ * Version: 1.8.2
  * Author: Clearent, LLC.
  * Author URI: http://clearent.github.io/wordpress/
  */
